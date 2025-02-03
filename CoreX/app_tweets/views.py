@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
-from .models import Tweet, Comment
+from .models import Tweet, Comment, Like
 from .serializers import TweetSerializer, LikeSerializer, CommentSerializer
 
 
@@ -115,6 +115,22 @@ class LikeTweetView(APIView):
             )
         like = Like.objects.create(tweet=tweet, user=request.user)
         return Response(LikeSerializer(like).data, status=status.HTTP_201_CREATED)
+
+
+class UnlikeTweetView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, pk):
+        tweet = get_object_or_404(Tweet, pk=pk)
+
+        like = Like.objects.filter(tweet=tweet, user=request.user).first()
+        if not like:
+            return Response({
+                "detail": "You have not liked this tweet."
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        like.delete()
+        return Response({"detail": "Like removed from the tweet."}, status=status.HTTP_204_NO_CONTENT)
 
 
 class GetLikesView(APIView):

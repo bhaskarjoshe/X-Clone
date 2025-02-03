@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from .models import Tweet, Media, Comment
+from .models import Like, Tweet, Media, Comment
 from django.contrib.auth import get_user_model
-from .models import Like
 
 User = get_user_model()
 
@@ -19,6 +18,7 @@ class MediaSerializer(serializers.ModelSerializer):
 
 
 class LikeSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = Like
         fields = ["id", "user", "created_at"]
@@ -36,6 +36,7 @@ class TweetSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     media = MediaSerializer(many=True, required=False)
     comments = CommentSerializer(many=True, required=False, read_only=True)
+    likes = LikeSerializer(many=True, required=False)
 
     def get_like_count(self, current_tweet):
         return current_tweet.likes.count()

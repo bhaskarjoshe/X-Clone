@@ -25,5 +25,4 @@ urlpatterns = [
     path("api/tweets/", include("app_tweets.urls")),
     path("api/comments/", include("app_comments.urls")),
     path("api/follows/", include("app_follow.urls")),
-    path("api/likes/", include("app_likes.urls")),
 ]
