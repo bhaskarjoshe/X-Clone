@@ -14,11 +14,12 @@ class UserSerializer(serializers.ModelSerializer):
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Media
-        fields = ["id", "file", "created_at"]
+        fields = ["id", "file", "uploaded_at"]
 
 
 class LikeSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+
     class Meta:
         model = Like
         fields = ["id", "user", "created_at"]
@@ -68,13 +69,11 @@ class TweetSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         validated_data["author"] = user
 
-        like_data = validated_data.pop("likes", [])
-        comment_data = validated_data.pop("comments", [])
+        media_data = validated_data.pop("media", [])
 
         tweet = Tweet.objects.create(**validated_data)
 
-        media_data = validated_data.get("media", [])
-        for media in media_data:
-            Media.objects.create(tweet=tweet, **media)
+        media_instances = [Media.objects.create(**media) for media in media_data]
+        tweet.media.set(media_instances)
 
         return tweet

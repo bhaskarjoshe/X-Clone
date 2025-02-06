@@ -11,15 +11,18 @@ class Tweet(models.Model):
     updated_at = models.DateTimeField(null=True, blank=True)
     is_pinned = models.BooleanField(default=False)
     is_deleted = models.BooleanField(default=False)
+    media = models.ManyToManyField("Media", related_name="tweets", blank=True)  # Multiple media files
+
 
     def __str__(self):
         return self.tweet_content[:50]
-    
 
 
 class Like(models.Model):
     tweet = models.ForeignKey(Tweet, related_name="likes", on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name="liked_tweets", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name="liked_tweets", on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -30,12 +33,11 @@ class Like(models.Model):
 
 
 class Media(models.Model):
-    tweet = models.ForeignKey(Tweet, related_name="media", on_delete=models.CASCADE)
     file = models.FileField(upload_to="tweet_media/")
-    created_at = models.DateTimeField(auto_now_add=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Media for tweet {self.tweet.id}"
+        return f"Media {self.id}"
 
 
 class Comment(models.Model):

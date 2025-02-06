@@ -20,5 +20,5 @@ class CommentSerializer(serializers.ModelSerializer):
         ]
 
     def get_replies(self, obj):
-        replies = obj.replies.filter(is_deleted=False).order_by('-created_at')
+        replies = obj.replies.filter(is_deleted=False).order_by("-created_at")
         return CommentSerializer(replies, many=True).data

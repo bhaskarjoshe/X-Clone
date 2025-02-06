@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_tweets/css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <img src="{% static 'app_tweets/images/x_logo.jpg' %}" alt="X Logo" class="logo">
+            </div>
+            <div class="navbar-center">
+                <div class="for-you navbar-center-active">For You</div>
+                <div class="following">Following</div>
+            </div>
+            <div class="navbar-right">
+                <input type="text" placeholder="Search" class="search-bar">
+                <i class="fa-regular fa-user user-profile-button"></i>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Navigation Sidebar (Hidden on Mobile) -->
+            <div class="left-navigation-bar">
+                <div class="navigation-icons">
+                    <div class="navigation-icon">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="navigation-text">Home</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span class="navigation-text">Search</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="navigation-text">Notifications</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span class="navigation-text">Messages</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span class="navigation-text">Lists</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span class="navigation-text">Communities</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-regular fa-user"></i>
+                        <span class="navigation-text">Profile</span>
+                    </div>
+                    <div class="navigation-icon">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                        <span class="navigation-text">More</span>
+                    </div>
+                        <button class="post-tweet">Post</button>
+                </div>
+            </div>
+
+            <!-- Center Content -->
+            <div class="center-content">
+                {% block content %}{% endblock %}
+            </div>
+
+            <!-- Right Sidebar (Hidden on Mobile) -->
+            <div class="right-info-column">
+                <div class="who-to-follow-container">
+                    <div><b>Who to follow</b></div>
+                    <ul class="who-to-follow-people">
+                        </ul>
+                    <div class="show-more">
+                        <a href="#">Show More</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{% static 'app_tweets/js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{% extends "app_authenticate/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="landing-page-container">
+        <div class= "top-part">
+            <div class="logo-container">
+                <img src="{% static 'app_authenticate/images/x_logo.jpg' %}" alt="X Logo" class="logo">
+            </div>
+        
+            <div class="landing-page-main-content">
+                <h1>Happening Now</h1>
+                <p>Join today.</p>
+                <a href="#" class="btn btn-google"><i class="fa-brands fa-google"></i> Sign in with Google</a>
+                <a href="#" class="btn btn-apple"><i class="fa-brands fa-apple"></i> Sign in with Apple</a>
+                <div class='or'>
+                    <hr><span>or</span><hr>
+                </div>
+                <button class="btn btn-register open-registration-form">Create Account</button>
+                <div class="create-account-text">
+                    <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, including <a href="#">Cookie Use</a>.</p>
+                </div>
+        
+                <div class="old-to-x">
+                    <h3>Already have an account?</h3>
+                    <button class="btn btn-sign-in open-login-form">Sign in</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="landing-page-footer">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Help Center</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Ads info</a>
+                <a href="#">More</a>
+                &copy; 2025 X, Inc.
+            </div>
+        </div>
+    </div>
+
+    {% comment %} registration dialog {% endcomment %}
+    <dialog class="registration-form">
+        <i class="fa-solid fa-xmark close-registration-form"></i>
+        <div class='registration-form-all-content'>
+            <div class="logo-container">
+                <img src="{% static 'app_authenticate/images/x_logo.jpg' %}" alt="X Logo" class="registration-form-logo">
+            </div>
+            <h2>Create an account</h2>
+            <div class="error-message registration-error"></div>
+            <form class="registration-input">
+                {% csrf_token %}
+                <div class="input-container">
+                    <label for="name">Userame</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+                <div class="login-redirect">
+                    Already have an account? <a href="#">Sign in</a>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    {% comment %} Sign In Dialog {% endcomment %}
+    <dialog class='login-form'>
+        <i class="fa-solid fa-xmark close-login-form"></i>
+        <div class='login-form-all-content'>
+            <div class='logo-container'>
+                <img src="{% static 'app_authenticate/images/x_logo.jpg' %}" alt="X Logo" class="login-form-logo">
+            </div>
+            <h2>Sign in to X</h2>
+            <a href="#" class="btn btn-google"><i class="fa-brands fa-google"></i> Sign in with Google</a>
+            <a href="#" class="btn btn-apple"><i class="fa-brands fa-apple"></i> Sign in with Apple</a>
+            <div class='or'>
+                <hr><span>or</span><hr>
+            </div>
+            <div class="error-message login-error"></div>
+            <form class='login-input'>
+                {% csrf_token %}
+                <div class="input-container">
+                    <label for="login-name">Username</label>
+                    <input type="text" id="login-name" required>
+                </div>
+                <div class="input-container">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">Sign In</button>
+                <div class="register-redirect">
+                    Don't have an account? <a href="#">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        const registerApiUrl = "{% url 'app_authenticate:register-api' %}"
+        const loginApiUrl = "{% url 'app_authenticate:login-api' %}"
+        const homepageUrl = "{% url 'homepage' %}"
+    </script>
+
+{% endblock %}

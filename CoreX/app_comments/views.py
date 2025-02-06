@@ -30,6 +30,7 @@ class CommentListView(APIView):
             status=status.HTTP_200_OK,
         )
 
+
 class CreateCommentView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -37,51 +38,69 @@ class CreateCommentView(APIView):
         tweet = get_object_or_404(Tweet, id=tweet_id)
         data = request.data
 
+        print(f"User authenticated: {request.user.is_authenticated}")
+        print(f"Parent comment ID: {data.get('parent_id')}")
         author = request.user
         parent_comment = None
 
         if data.get("parent_id"):
-            parent_comment = get_object_or_404(Comment, id=data["parent_id"], tweet=tweet)
+            parent_comment = get_object_or_404(
+                Comment, id=data["parent_id"], tweet=tweet
+            )
 
         comment_content = data.get("comment_content")
         if not comment_content:
-            return Response({"error": "Comment content is required."}, status=status.HTTP_400_BAD_REQUEST)
-
+            return Response(
+                {"error": "Comment content is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         comment = Comment.objects.create(
-            tweet=tweet, author=author, parent=parent_comment, comment_content = comment_content
+            tweet=tweet,
+            author=author,
+            parent=parent_comment,
+            comment_content=comment_content,
         )
         serializer = CommentSerializer(comment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
+
 class CommentDetailView(APIView):
     def get(self, request, comment_id):
         comment = get_object_or_404(Comment, id=comment_id, is_deleted=False)
         serializer = CommentSerializer(comment)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
     def put(self, request, comment_id):
         comment = get_object_or_404(Comment, id=comment_id, is_deleted=False)
         data = request.data
 
         if comment.author.id != data.get("author_id"):
-            return Response({'error': "Permission denied"}, status=status.HTTP_403_FORBIDDEN)
-        
+            return Response(
+                {"error": "Permission denied"}, status=status.HTTP_403_FORBIDDEN
+            )
+
         comment.comment_content = data.get("comment_content", comment.comment_content)
         comment.save()
         serializer = CommentSerializer(comment)
-        return  Response(serializer.data, status=status.HTTP_200_OK)
-    
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def delete(self, request, comment_id):
         comment = get_object_or_404(Comment, id=comment_id)
 
         if comment.author.id != request.user.id:
-            return Response({"error": "Permission denied"}, status=status.HTTP_403_FORBIDDEN)
-        
+            return Response(
+                {"error": "Permission denied"}, status=status.HTTP_403_FORBIDDEN
+            )
+
         comment.is_deleted = True
         comment.save()
-        return Response({"message": "Comment deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
-    
+        return Response(
+            {"message": "Comment deleted successfully"},
+            status=status.HTTP_204_NO_CONTENT,
+        )
+
+
 class CommentRepliesView(APIView):
     def get(self, request, comment_id):
         comment = get_object_or_404(Comment, id=comment_id, is_deleted=False)
