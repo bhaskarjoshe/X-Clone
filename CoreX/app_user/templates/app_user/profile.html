@@ -1,0 +1,52 @@
+{% extends "app_user/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    {% comment %} profile-user-info {% endcomment %}
+    <div class="profile-user-info-section">
+        <div class="cover-photo">
+            <img id="cover-image" src="" alt="Cover Photo">
+        </div>
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img id="profile-image" src="" alt="Profile Picture">
+            </div>
+            <div class="profile-details">
+                <div ='user-contact'>
+                    <div id="username-with-tick">
+                        <div id='username'></div>
+                        <div class='power-user-tick'><img src="{% static 'app_user/images/power_user.png' %}" alt="X Logo" class="power_user_logo"></div>
+                    </div>
+                    <span class="email">@<span id="email"></span></span>
+                </div>
+                <p id="bio"></p>
+            </div>
+            <div class= 'follower-following-info'>
+                <div class='Following'>
+                    <div class='following-count'></div><span> Following</span>
+                </div>
+                <div class='Followers'>
+                    <div class='followers-count'></div> <span>Followers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   <div class='profile-tweet-container'>
+   </div>
+   <button id="load-more-btn" class="load-more-btn"><i class="fa-solid fa-rotate-right"></i> Load More</button>
+
+    <script>
+        const homepageUrl = "{% url 'homepage' %}"
+        const profileUrl = "{% url 'profile' %}"
+        const logoutUrl = "{% url 'app_authenticate:logout-api' %}"
+
+        const profileApiUrl = "{% url 'app_user:user-profile' %}"
+        const nonFollowedUsersApiUrl = "{% url 'app_follow:non-following-users' %}"    
+        const followingApiUrl = "{% url 'app_follow:following-list' %}"    
+        const followersApiUrl = "{% url 'app_follow:followers-list' %}"    
+        
+    </script>
+{% endblock %}

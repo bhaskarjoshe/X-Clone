@@ -10,12 +10,14 @@ from .views import (
     UploadMediaView,
     GetMediaByTweetView,
     allTweetView,
-    FollowingTweetsView
+    FollowingTweetsView,
+    UserTweetsByIdView
 )
 
 app_name = 'app_tweets'
 
 urlpatterns = [
+    path("api/tweet/user/<int:user_id>/", UserTweetsByIdView.as_view(), name="user-tweets-by-id-api"),
     path("api/tweet/", TweetListView.as_view(), name="tweet-list-api"),
     path("api/tweet/all-tweets/", allTweetView.as_view(), name="all-tweets-api"),
     path("api/tweet/following-tweets/", FollowingTweetsView.as_view(), name="following-tweets-api"),

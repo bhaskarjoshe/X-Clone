@@ -55,7 +55,7 @@ class FollowerUserView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        Follow.objects.filter(follower=request.user, followed=UserWarning).delete()
+        Follow.objects.filter(follower=request.user, followed=user_to_unfollow).delete()
         return Response(
             {"message": f"You have unfollowed {user_to_unfollow.username}"},
             status=status.HTTP_204_NO_CONTENT,

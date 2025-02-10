@@ -1,9 +1,24 @@
 from rest_framework import serializers
 from app_tweets.models import Comment
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields =[
+            "id",
+            "username",
+            "email",
+            "profile_picture",
+            ]
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source="author.username")
+    author = UserSerializer()
+    author_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), source="author", write_only=True)
+    parent_id = serializers.PrimaryKeyRelatedField(queryset=Comment.objects.all(), source="parent", allow_null=True, required=False)
     replies = serializers.SerializerMethodField()
 
     class Meta:
@@ -12,7 +27,9 @@ class CommentSerializer(serializers.ModelSerializer):
             "id",
             "tweet",
             "author",
+            "author_id",
             "parent",
+            "parent_id",
             "comment_content",
             "created_at",
             "is_deleted",

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_user/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'app_comments/css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% csrf_token %}
+         {% comment %} Navigation Bar  {% endcomment %}
+        <nav class="navbar">
+            <div class="navbar-left">
+                <img src="{% static 'app_user/images/x_logo.jpg' %}" alt="X Logo" class="logo">
+            </div>
+            <div class="navbar-center">
+                <div class="navbar-center-username">
+                    
+                </div>
+            </div>
+            <div class="navbar-right">
+                <input type="text" placeholder="Search" class="search-bar">
+                <i class="fa-regular fa-user user-profile-button"></i>
+            </div>
+        </nav>
+
+        {% comment %} Main Content {% endcomment %}
+        <main class="main-content">
+             {% comment %} Left Navigation Sidebar (Hidden on Mobile)  {% endcomment %}
+            <div class="left-navigation-bar">
+                <div class="navigation-icons">
+                    <div class="navigation-icon go-to-homepage">
+                        <i class="fa-solid fa-house "></i>
+                        <span class="navigation-text">Home</span>
+                    </div>
+                    <div class="navigation-icon go-to-searchbar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span class="navigation-text">Search</span>
+                    </div>
+                    <div class="navigation-icon go-to-profile">
+                        <i class="fa-regular fa-user"></i>
+                        <span class="navigation-text">Profile</span>
+                    </div> 
+                        <button class="post-tweet">Post</button>
+                </div>
+            </div>
+
+             {% comment %} Center Content  {% endcomment %}
+            <div class="center-content">
+                {% block content %}{% endblock %}
+            </div>
+
+            {% comment %} Right Sidebar (Hidden on Mobile)  {% endcomment %}
+            <div class="right-info-column">
+                <div class="who-to-follow-container">
+                    <div class='who-to-follow-heading'><b>Who to follow</b></div>
+                    <div class="who-to-follow-people">
+
+                    </div>
+                    <div class="show-more">
+                        <a href="#" id='show-more-link'>Show More</a>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        {% comment %} Dialog for Followers and Following{% endcomment %}
+             
+
+        {% comment %} Tweet Dialog {% endcomment %}
+        <dialog class='individual-tweet-modal'>
+            <i class="fa-solid fa-xmark close-tweet-modal"></i>
+            <div class="tweet-dialog-content">
+                <div class="tweet-header">
+                    <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
+                    <div class="tweet-user-info">
+                        <strong class="tweet-username"></strong>
+                        <span class="tweet-email"></span>
+                        <span class="tweet-date"></span>
+                    </div>
+                </div>
+                <div class="tweet-body">
+                    <p class="tweet-text"></p>
+                    <div class="tweet-media"></div>
+                </div>
+                <div class="tweet-actions">
+                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> <span class="comment-count">0</span></span>
+                    <span class="tweet-action"><i class="fa-solid fa-retweet"></i> 0</span>
+                    <span class="tweet-action"><i class="fa-regular fa-heart"></i> <span class="like-count">0</span></span>
+                    <span class="tweet-action"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</span>
+                </div>
+                <form class="add-comment-form">
+                    {% csrf_token %}
+                    <input type="text" class="reply-text" placeholder="Post your reply" required>
+                    <button class='tweet-reply'>Reply</div>
+                </form>
+                <div class="tweet-comments">
+                    <h3>Comments</h3>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </dialog>  
+        
+        {% comment %} Edit Dialog {% endcomment %}
+        <dialog class='edit-tweet-modal'>
+            <i class = 'fa-solid fa-xmark close-edit-modal'></i>
+            <div class='edit-tweet-dialog-content'>
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
+                <div class="edit-tweet-user-info">
+                    <strong class="tweet-username"></strong>
+                    <span class="tweet-email"></span>
+                    <span class="tweet-date"></span>
+                </div>
+            </div>
+            <form class="edit-tweet-form">
+                {% csrf_token %}
+                <textarea class='edit-tweet-text' required></textarea>
+                <button type='submit' class='post-edit-button'>Submit</button>
+            </from>
+        </dialog>
+    </div>
+    <script src="{% static 'app_user/js/script.js' %}"></script>
+    <script src="{% static 'app_comments/js/script.js' %}"></script>
+</body>
+</html>

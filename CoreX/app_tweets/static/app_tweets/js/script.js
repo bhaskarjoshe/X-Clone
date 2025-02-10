@@ -1,9 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchTweets()
+    fetchNonFollowedUsers()
     document.getElementById("load-more-btn").addEventListener("click", loadMoreTweets)
+    document.getElementById("show-more-link").addEventListener("click", loadMoreNonFollowedPeople)
 })
 
 let currentPage = 1
+let nonFollowedPeopleCurrentPage = 1
+
+
+// getting current user
+async function fetchCurrentUser() {
+    try{
+        const response = await fetch ('/user/api/profile/')
+        if(response.ok){
+            const data = await response.json()
+            return data
+        }
+        else{
+            console.log('Response error')
+        }
+    }
+    catch(error)
+    {
+        console.error(error)
+        return null
+    }
+}
+
 
 
 //fetching tweets
@@ -21,9 +45,27 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
             tweetContainer.innerHTML = ""
         }
 
+        const currentUser = await fetchCurrentUser()
+        const currentUserId = currentUser.id
+        const isPowerUser = currentUser.is_power_user
+
         data.results.forEach(tweet => {
             const tweetElement = document.createElement("div")
             tweetElement.classList.add("tweet-card")
+            tweetElement.setAttribute('data-tweet-id', tweet.id)
+            
+            const hasLiked = tweet.likes.find(like => like.user.id===currentUserId) !== undefined
+            const likeButtonClass = hasLiked ? "liked" : ""
+            const heartIconClass =  hasLiked ? "fa-solid": "fa-regular" 
+
+            let editButton = ''
+            if(tweet.author.id === currentUserId && isPowerUser){
+                editButton=`
+                    <span class="tweet-edit-icon" data-tweet-id="${tweet.id}" onclick="editTweet(${tweet.id})">
+                        <i class="fa-solid fa-user-pen"></i>
+                    </span>
+                `}
+
             tweetElement.innerHTML = `
                 <div class="tweet-header">
                     <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
@@ -33,14 +75,15 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
                         <span class="tweet-date">${new Date(tweet.created_at).toLocaleString()}</span>
                     </div>
                 </div>
+                ${editButton}
                 <div class="tweet-content">
                     ${tweet.tweet_content}
                     ${renderMedia(tweet.media)}
                 </div>
-                <div class="tweet-actions">
-                    <span class="tweet-action"><i class="fa-regular fa-comment"></i> ${tweet.comments.length}</span>
+                <div class="tweet-actions" data-tweet-id='${tweet.id}'>
+                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> ${tweet.comments.length}</span>
                     <span class="tweet-action"><i class="fa-solid fa-retweet"></i>0</span>
-                    <span class="tweet-action"><i class="fa-regular fa-heart"></i> ${tweet.likes.length}</span>
+                    <span class="tweet-action ${likeButtonClass}"><i class="${heartIconClass} fa-heart like-tweet-icon ${likeButtonClass}"></i> ${tweet.likes.length}</span>
                     <span class="tweet-action"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</span>
                 </div>
             `
@@ -150,6 +193,7 @@ async function postTweet() {
     }
 
     try {
+        
         const response = await fetch(postTweetUrl, {
             method: "POST",
             headers: {
@@ -207,3 +251,177 @@ logoutButton.addEventListener('click', async () => {
         window.location.reload()
     }
 })
+
+
+
+//fetching non-followed users
+async function fetchNonFollowedUsers(page = 1){
+    try{
+        const urlWithPageNo = `${nonFollowedUsersApiUrl}?page=${page}`
+        const response = await fetch(urlWithPageNo)
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`)
+        }
+        
+        const data = await response.json()
+
+        const nonFollowedUserContainer = document.querySelector('.who-to-follow-people')
+        
+        nonFollowedUserContainer.innerHTML = ''
+        
+        data.forEach(nonFollowedUser => {
+            const whoToFollowElement = document.createElement('div')
+            whoToFollowElement.classList.add("who-to-follow-card")
+            whoToFollowElement.innerHTML = `
+            <div class='card-left-side'>
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile Picture" class="profile-pic">
+                <div class="user-info">
+                    <strong class="username">${nonFollowedUser.username}</strong>
+                    <span class="email">@${nonFollowedUser.email.split('@')[0]}</span>
+                </div>
+            </div>
+            <button class="follow-button" data-user-id="${nonFollowedUser.id}">Follow</button>
+            `
+            nonFollowedUserContainer.appendChild(whoToFollowElement)
+        })
+        
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+//for show more  non followed people
+async function loadMoreNonFollowedPeople(){
+    nonFollowedPeopleCurrentPage++
+    await fetchNonFollowedUsers(nonFollowedPeopleCurrentPage)
+}
+
+
+// follow / unfollow toggle
+document.addEventListener('click', async (event)=>{
+    if(event.target.classList.contains('follow-button')){
+        const currentButton = event.target
+        const currentButtonValue = currentButton.innerText
+        const userId = currentButton.getAttribute('data-user-id')
+        const apiUrl = `/follows/api/follow/${userId}/`
+
+        if(currentButtonValue === `Follow`){
+            try{
+                const response = await fetch(apiUrl,{
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': document.querySelector("[name=csrfmiddlewaretoken]").value
+                    }
+                })
+
+                if(!response.ok){
+                    throw new Error(`HTTP error! status: ${response.status}`)
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+
+            currentButton.innerText = `Unfollow`
+            currentButton.style.color = 'black'
+            currentButton.style.backgroundColor = 'white'
+        }
+        else{
+            try{
+                
+                const response = await fetch(apiUrl,{
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': document.querySelector("[name=csrfmiddlewaretoken]").value
+                    }
+                })
+
+                if(!response.ok){
+                    throw new Error(`HTTP error! status: ${response.status}`)
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+            currentButton.innerText = `Follow`
+            currentButton.style.color = 'white'
+            currentButton.style.backgroundColor = '#1da1f2' 
+        }
+    }
+})
+
+
+// toggle between profile
+const homepageToggle = document.querySelector('.go-to-homepage')
+const searchToggle = document.querySelector('.go-to-searchbar')
+const profileToggle = document.querySelector('.go-to-profile')
+
+
+homepageToggle.addEventListener('click', (event)=>{
+    window.location.href = homepageUrl  
+})
+
+searchToggle.addEventListener('click', (event)=>{
+    const searchbar = document.querySelector(".search-bar")
+    searchbar.focus()
+})
+
+profileToggle.addEventListener('click', (event)=>{
+    window.location.href = profileUrl 
+})
+
+
+//like unlike tweet
+document.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("like-tweet-icon")) {
+        const likeIcon = event.target
+        const likeButton = likeIcon.closest(".tweet-action")
+        const tweetAction = likeIcon.closest(".tweet-actions")
+        const tweetId = tweetAction.getAttribute("data-tweet-id")
+
+        const isLiked = likeButton.classList.contains("liked")
+        const apiUrl = `/tweets/api/tweet/${tweetId}/${isLiked ? "unlike" : "like"}/`
+        const method = isLiked ? "DELETE" : "POST"
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: method,
+                headers: {
+                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+                }
+            })
+
+            if (response.ok) {
+                toggleLikeUI(likeButton, likeIcon, isLiked)
+            } else {
+                console.error(`Error ${isLiked ? "unliking" : "liking"} tweet`)
+            }
+        } catch (error) {
+            console.error("Network error", error)
+        }
+    }
+})
+
+//Updates the UI based on like/unlike action.
+function toggleLikeUI(likeButton, likeIcon, isLiked) {
+    const likeCountElement = likeButton
+    let currentLikeCount = parseInt(likeCountElement.textContent.trim(), 10) || 0
+
+    if (isLiked) {
+        likeButton.classList.remove("liked")
+        likeIcon.classList.remove("fa-solid")
+        likeIcon.classList.add("fa-regular")
+        likeIcon.style.color = "#aaaaaa"
+        likeCountElement.innerHTML = `<i class="fa-regular fa-heart like-tweet-icon"></i> ${Math.max(currentLikeCount - 1, 0)}`
+    } else {
+        likeButton.classList.add("liked")
+        likeIcon.classList.remove("fa-regular")
+        likeIcon.classList.add("fa-solid")
+        likeIcon.style.color = "#e57373"
+        likeCountElement.innerHTML = `<i class="fa-solid fa-heart like-tweet-icon"></i> ${currentLikeCount + 1}`
+    }
+}
+

@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from .models import Tweet, Comment, Like, Media
 from .serializers import (
     TweetSerializer,
@@ -19,18 +20,34 @@ class TweetPagination(PageNumberPagination):
     max_page_size = 100
 
 
+class UserTweetsByIdView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    pagination_class = TweetPagination()
+
+    def get(self, request, user_id):
+        tweets = Tweet.objects.filter(author_id=user_id, is_deleted=False).order_by("-created_at")
+        
+        if not tweets.exists():
+            return Response({"detail": "No tweets found for this user."}, status=status.HTTP_404_NOT_FOUND)
+
+        paginator = self.pagination_class
+        result_page = paginator.paginate_queryset(tweets, request)
+        serializer = TweetSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
+
+
 class TweetListView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
 
     def get(self, request):
         if request.user.is_power_user:
-            tweets = Tweet.objects.all()
+            tweets = Tweet.objects.all().order_by("-created_at")
         else:
-            tweets = Tweet.objects.filter(author=request.user, is_deleted=False)
+            tweets = Tweet.objects.filter(author=request.user, is_deleted=False).order_by("-created_at")
 
         paginator = TweetPagination()
-        result_page = paginator.paginate_queryset(tweets, request)
+        result_page = paginator.paginate_queryset(tweets, request, view=self)
         serializer = TweetSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
@@ -116,6 +133,7 @@ class TweetDetailView(APIView):
                 {"detail": "Only power users can edit tweets."},
                 status=status.HTTP_403_FORBIDDEN,
             )
+        request.data['created_at'] = timezone.now()
 
         serializer = TweetSerializer(
             tweet, data=request.data, partial=True, context={"request": request}
@@ -240,3 +258,5 @@ class GetMediaByTweetView(APIView):
 
         serializer = MediaSerializer(media, many=True)
         return Response(serializer.data)
+
+    

@@ -23,13 +23,18 @@
         <button id="load-more-btn" class="load-more-btn"><i class="fa-solid fa-rotate-right"></i> Load More</button>
     </div>
 
+
+    
+
     <script>
         const allTweetsApiUrl = "{% url 'app_tweets:all-tweets-api' %}"
         const allFollowingTweetsApiUrl = "{% url 'app_tweets:following-tweets-api' %}"
         const followingTweetsApiUrl = "{% url 'app_tweets:following-tweets-api' %}"
         const postTweetUrl = "{% url 'app_tweets:tweet-list-api' %}"
         const logoutUrl = "{% url 'app_authenticate:logout-api' %}"
+        const homepageUrl = "{% url 'homepage' %}"
+        const profileUrl = "{% url 'profile' %}"
 
-        const nonFollowedUsersApi = "{% url 'app_follow:non-following-users' %}"
+        const nonFollowedUsersApiUrl = "{% url 'app_follow:non-following-users' %}"    
     </script>
 {% endblock %}

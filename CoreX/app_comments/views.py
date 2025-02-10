@@ -108,3 +108,23 @@ class CommentRepliesView(APIView):
 
         serializer = CommentSerializer(replies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, comment_id):
+        parent_comment = get_object_or_404(Comment, id=comment_id, is_deleted=False)
+        data = request.data
+
+        comment_content = data.get("comment_content")
+        if not comment_content:
+            return Response({
+                "error": "Comment content is required."
+            }, status = status.HTTP_400_BAD_REQUEST)
+        
+        reply = Comment.objects.create(
+            tweet = parent_comment.tweet,
+            author=request.user,
+            parent=parent_comment,
+            comment_content=comment_content,
+        )
+
+        serializer = CommentSerializer(reply)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
