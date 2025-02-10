@@ -1,0 +1,450 @@
+* {
+    box-sizing: border-box;
+    /* border: 1px solid white; */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: #000000;
+}
+
+.navbar-left .logo {
+    width: 40px;
+    height: auto;
+}
+
+.navbar-center {
+    display: flex;
+    gap: 4rem;
+}
+
+.navbar-center-active
+{
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #1da1f2;
+    transition: border-bottom 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+.navbar-center .nav-item {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+}
+
+.navbar-right .search-bar {
+    width: 80px;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 15px;
+    border-radius: 20px;
+    outline: none;
+    transition: width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    font-size: 14px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.left-navigation-bar,
+.right-info-column {
+    display: none;
+}
+
+.center-content {
+    flex: 1;
+}
+
+.tweet-input-box {
+    border: 1px solid #444444;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: black;
+}
+
+.tweet-input-box textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: black;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.tweet-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.tweet-footer-navigation i {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.post-tweet {
+    padding: 5px 15px;
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 15%; 
+    font-weight: bold;
+}
+
+.navigation-icons .post-tweet{
+    width: 100%;
+}
+
+.tweet-card {
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.tweet-card:hover {
+    transform: translateY(-2px);
+    background: rgba(40, 40, 40, 0.9);
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #666666;
+}
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-user-info strong {
+    font-size: 17px;
+    color: #ffffff;
+}
+
+.tweet-email {
+    font-size: 15px;
+    color: #bbbbbb;
+    margin-bottom: 6px;
+}
+
+.tweet-date {
+    font-size: 13px;
+    color: #888888;
+}
+
+.tweet-content {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
+    padding: 15px 0;
+}
+
+.tweet-actions {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tweet-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #aaaaaa;
+    transition: color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.tweet-action {
+    font-size: 0.875rem;
+}
+
+.tweet-action i{
+    font-size: 1rem;
+}
+
+.tweet-action:hover {
+    transform: scale(1.1);
+}
+
+@media (min-width: 600px) {
+
+    .navbar-left .logo {
+        width: 50px;
+    }
+
+    .navbar-center .nav-item {
+        font-size: 16px;
+    }
+
+    .navbar-right .search-bar {
+        width: 120px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+    
+}
+
+@media (min-width: 1024px) {
+    .container{
+        padding: 0;
+    }
+    
+    .main-content {
+        flex-direction: row;
+        padding:0;
+    }
+
+    .left-navigation-bar {
+        display: block;
+        width: 10%;
+    }
+
+    .right-info-column{
+        width:30%;
+        display:block
+    }
+
+    .center-content {
+        width: 60%;
+        padding: 0 2rem;
+    }
+
+    .navigation-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        transform: scale(1.4);
+        margin-top: 5rem;
+        margin-left: 1rem;
+    }
+
+    .navigation-icon {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+
+    .navigation-text {
+        margin-left: 10px;
+    }
+
+    .profile-navigator {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .profile-pic {
+        width: 50px;
+        height: 50px;
+    }
+
+
+
+    .navbar-right .search-bar {
+        width: 160px;
+    }
+}
+
+
+/* tweet media */
+.tweet-media-container {
+    margin-top: 10px;
+}
+
+.tweet-media {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+video.tweet-media {
+    max-height: 300px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+/* logout */
+i{
+    cursor: pointer;
+}
+
+
+/* load more button */
+.load-more-btn {
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+
+.load-more-btn:hover {
+    background-color: #1985c4;
+}
+
+.load-more-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(29, 161, 242, 0.3);
+}
+
+.load-more-btn:disabled {
+    background-color: #8899a6;
+    cursor: default;
+}   
+
+
+/* who to follow container */
+.right-info-column{
+   padding-top: 10px;
+}
+
+/* this is breaking responsiveness so later on i will fix it */
+.who-to-follow-container{
+    position: fixed;
+    padding: 2rem 1rem;
+    margin-right: 2px;
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px; 
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, background 0.3s ease; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.who-to-follow-heading{
+    font-size: 1.3rem;
+}
+
+.who-to-follow-people{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.who-to-follow-card{
+    display: flex;
+    justify-content: space-between;
+    gap:2rem;
+}
+
+.card-left-side{
+    display:flex;
+    align-items: center;
+    gap:0.5rem;
+}
+
+.follow-button{
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    /* height:100%; */
+    align-self: center;
+    padding: 5px 0;
+    width:100px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info .email{
+    font-size: 0.875rem;
+}
+
+.show-more a{
+    text-decoration: none;
+    color: #1da1f2;
+}
+
+
+/* like icon formatting*/
+.liked {
+    color: #e57373; 
+}
+
+
+.tweet-edit-icon{
+    position: absolute;
+    right:1rem;
+    top:1rem;
+    transform: scale(0.8);
+    color:#888
+}

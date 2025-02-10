@@ -1,0 +1,192 @@
+.individual-tweet-modal {
+    width: 70%;
+    height:90vh;  
+    max-width: 600px;  
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 15px;
+    background: rgba(30, 30, 30, 0.8); 
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px); /* Softer blur */
+    position: fixed;
+    z-index: 1000;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.individual-tweet-modal:hover {
+    background: rgba(40, 40, 40, 0.9); 
+    transform: translateY(-2px);
+}
+
+.individual-tweet-modal::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .individual-tweet-modal {
+        width: 65%;
+        max-width: 700px;
+    }
+}
+
+.individual-tweet-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+
+.close-tweet-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.close-tweet-modal:hover {
+    color: #bbbbbb;
+}
+
+/* Tweet content */
+.tweet-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: scroll;
+    max-height: 80vh;
+    scrollbar-width: none;
+    outline: none;
+}
+
+.individual-tweet-modal .tweet-dialog-content::-webkit-scrollbar {
+    display: none;
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #666666; 
+}
+
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-username {
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tweet-email,
+.tweet-date {
+    font-size: 15px;
+    color: #bbbbbb;
+}
+
+
+.tweet-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tweet-text {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+
+.tweet-media {
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Comments Section */
+.tweet-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.comment-user-detail {
+    font-size: 15px;
+    color: #bbbbbb;
+}
+
+.comment-container{
+    margin-left:4rem;
+    cursor: pointer;
+}
+
+.comments-list {
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.add-comment-form {
+    display: flex;
+    gap: 10px;
+}
+
+.reply-text {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    backdrop-filter: blur(6px);
+}
+
+.reply-text:focus {
+    outline: none;
+}
+
+
+.add-comment-form button {
+    padding: 10px 20px;
+    background: #1da1f2;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-comment-form button:hover {
+    background: linear-gradient(135deg, #1a8cd8, #1677c0);
+}
