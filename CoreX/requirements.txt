@@ -19,4 +19,5 @@ typing_extensions==4.12.2
 wheel==0.45.1
 whitenoise==6.8.2
 elasticsearch-dsl
+django_elasticsearch_dsl
 
