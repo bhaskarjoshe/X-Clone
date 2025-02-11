@@ -6,7 +6,33 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 from .serializers import RegisterSerializer, LoginSerializer, UserProfileSerializer
 
+from elasticsearch_dsl.query import MultiMatch
+from .serach_indexes import UserDocument
+
 User = get_user_model()
+
+class SearchUsersView(APIView):
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get("q", "")
+        if query:
+            search = UserDocument.search().query(
+                MultiMatch(
+                    query=query,
+                    fields=["username", "email", "bio"],
+                    fuzziness="auto",
+                )
+            )
+            results = search.execute()
+            users =[
+                {
+                    "id": hit.id, 
+                    "username":hit.username, 
+                    "email": hit.email, 
+                    "bio": hit.bio
+                } for hit in results
+                ]
+            return Response({"users": users})
+        return Response({"users": []})
 
 
 class RegisterView(APIView):

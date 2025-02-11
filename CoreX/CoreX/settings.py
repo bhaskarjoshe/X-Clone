@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from elasticsearch_dsl import connections
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +32,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ["main-project-x.onrender.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["main-project-x.onrender.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -48,7 +51,19 @@ INSTALLED_APPS = [
     "app_tweets",
     "app_comments",
     "app_follow",
+    "django_elasticsearch_dsl"
 ]
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': ['http://localhost:9200'], 
+        'timeout': 10,
+    }
+}
+
+connections.create_connection(alias='default', hosts=ELASTICSEARCH_DSL['default']['hosts'])
+
+
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (

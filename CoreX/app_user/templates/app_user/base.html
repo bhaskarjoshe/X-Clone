@@ -23,8 +23,17 @@
                 </div>
             </div>
             <div class="navbar-right">
-                <input type="text" placeholder="Search" class="search-bar">
+                <div style="position: relative;">
+                    <input type="text" placeholder="Search" class="search-bar">
+                    <div id="search-results" style="display: none;">
+
+                    </div>
+                </div>
                 <i class="fa-regular fa-user user-profile-button"></i>
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <div class="dropdown-item" id="viewProfile">Home</div>
+                    <div class="dropdown-item" id="logout">Logout</div>
+                </div>
             </div>
         </nav>
 
@@ -122,6 +131,29 @@
                 <button type='submit' class='post-edit-button'>Submit</button>
             </from>
         </dialog>
+
+        {% comment %} Following Dialog {% endcomment %}
+        <dialog class='following-list-modal'>
+            <div class='modal-header'>
+                <h2 class='modal-title'>Following</h2>
+                <i class = 'fa-solid fa-xmark close-following-modal'></i>
+            </div>
+            <div class="modal-body">
+            
+            </div>
+        </dialog>
+
+        {% comment %} Followers Dialog {% endcomment %}
+        <dialog class='followers-list-modal'>
+            <div class='modal-header'>
+                <h2 class='modal-title'>Followers</h2>
+                <i class='fa-solid fa-xmark close-followers-modal'></i>
+            </div>
+            <div class="modal-body">
+            
+            </div>
+        </dialog>
+
     </div>
     <script src="{% static 'app_user/js/script.js' %}"></script>
     <script src="{% static 'app_comments/js/script.js' %}"></script>

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     fetchCurrentUserTweets()
     document.getElementById("show-more-link").addEventListener("click", loadMoreNonFollowedPeople)
     document.getElementById("load-more-btn").addEventListener("click", loadMoreTweets)
-
+    
 })
 
 let currentPage = 1
@@ -224,10 +224,29 @@ document.addEventListener('click', async (event)=>{
     }
 })
 
+//user-profile-button 
+const profileButton = document.querySelector('.user-profile-button')
+const dropdownMenu = document.getElementById('userDropdown')
+const viewProfile = document.getElementById('viewProfile')
+const logout = document.getElementById('logout')
 
-//temporary logout button (later on to be converted to a dropdown which takes to profile and logout)
-const logoutButton = document.querySelector('.user-profile-button')
-logoutButton.addEventListener('click', async () => {
+
+profileButton.addEventListener('click', ()=>{
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'
+})
+
+document.addEventListener('click', (event)=>{
+    if(!profileButton.contains(event.target) && !dropdownMenu.contains(event.target)){
+        dropdownMenu.style.display = "none"
+    }
+})
+
+viewProfile.addEventListener('click', ()=>{
+    window.location.href = '/homepage/'
+})
+
+
+logout.addEventListener('click', async () => {
     const response = await fetch(logoutUrl, {
         method: "DELETE",
         headers: {
@@ -239,7 +258,6 @@ logoutButton.addEventListener('click', async () => {
         window.location.reload()
     }
 })
-
 
 
 //fetching current user tweets
@@ -294,7 +312,7 @@ async function fetchCurrentUserTweets(page = 1) {
                     ${renderMedia(tweet.media)}
                 </div>
                 <div class="tweet-actions" data-tweet-id='${tweet.id}'>
-                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> ${tweet.comments.length}</span>
+                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> ${tweet.comments.filter(comment => comment.parent_id === null).length}</span>
                     <span class="tweet-action"><i class="fa-solid fa-retweet"></i>0</span>
                     <span class="tweet-action ${likeButtonClass}"><i class="${heartIconClass} fa-heart like-tweet-icon ${likeButtonClass}"></i> ${tweet.likes.length}</span>
                     <span class="tweet-action"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</span>
@@ -470,6 +488,125 @@ editTweetForm.addEventListener('submit', async(event) => {
             openContentDialog(tweetId, 'tweet')
         }
     } catch (error) {
-        console.log('Error updating tweet: ', error);
+        console.log('Error updating tweet: ', error)
     }
-});
+})
+
+
+// following - follwers dialog
+
+//following dialog
+const followingListModal = document.querySelector('.following-list-modal')
+
+document.addEventListener('click', async (event)=>{
+    if(event.target.classList.contains('following')){
+        const followingList = await fetchFollowingList()
+        const modalBody = followingListModal.querySelector('.modal-body')
+        modalBody.innerText = ''
+        
+        followingList.forEach(following=>{
+            const personCard = document.createElement('div')
+            personCard.classList.add('following-person-card')
+            personCard.innerHTML = `
+            <div class='following-person-info'>
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
+                    <div class="following-username-email">
+                        <strong>${following.username}</strong> 
+                        <span class="tweet-email">@${following.email.split('@')[0]}</span>
+                    </div>
+            </div>
+            <button class='following-follow'>Follow</button>
+            `
+            modalBody.appendChild(personCard)
+        })
+        followingListModal.showModal()
+    
+    }
+})
+
+
+document.querySelector('.close-following-modal').addEventListener('click', () => {
+    followingListModal.close()
+})
+
+//followers dialog
+const followersListModal = document.querySelector('.followers-list-modal')
+
+document.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('followers')) {
+        const followersList = await fetchFollowersList()
+        const modalBody = followersListModal.querySelector('.modal-body')
+        modalBody.innerText = ''
+        
+        followersList.forEach(follower => {
+            const personCard = document.createElement('div')
+            personCard.classList.add('followers-person-card')
+            personCard.innerHTML = `
+            <div class='followers-person-info'>
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
+                <div class="followers-username-email">
+                    <strong>${follower.username}</strong>
+                    <span class="tweet-email">@${follower.email.split('@')[0]}</span>
+                </div>
+            </div>
+            <button class='followers-follow'>UnFollow</button>
+            `
+            modalBody.appendChild(personCard)
+        })
+        followersListModal.showModal()
+    }
+})
+
+document.querySelector('.close-followers-modal').addEventListener('click', () => {
+    followersListModal.close()
+})
+
+
+// search bar (implementing elastic search)
+document.querySelector('.search-bar').addEventListener('keyup', async function(){
+    let query = this.value.trim()
+    const searchResults = document.getElementById("search-results")
+
+    if (query.length > 2){
+        const response = await fetch(`/authenticate/api/search/?q=${query}`)
+        const data = await response.json()
+
+        let results = document.getElementById("search-results")
+        results.innerHTML = ''
+
+        if (data.users.length === 0) {
+            searchResults.style.display = "none"
+            return
+        }
+
+        data.users.forEach(user=>{
+            let userData = document.createElement("div")
+            userData.classList.add("search-result-item")
+            const username= user.username.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+            const email = user.email.split('@')[0]
+
+            userData.innerHTML =`
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="search-profile-pic">
+                <div class= 'search-user-info'>
+                    <div class='search-user-name'>${username}</div>
+                    <div class='search-user-email'>@${email}</div>
+                </div>
+                `
+            results.appendChild(userData)
+        })
+        searchResults.style.display = "block"
+    }
+    else {
+        document.getElementById("search-results").innerHTML = ""
+        searchResults.style.display = "none"
+    }
+})
+
+document.addEventListener('click', (event) => {
+    const searchBar = document.querySelector('.search-bar')
+    const searchResults = document.getElementById('search-results')
+
+    if (!searchBar.contains(event.target) && !searchResults.contains(event.target)) {
+        searchResults.style.display = "none"
+    }
+})

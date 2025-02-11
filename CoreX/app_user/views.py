@@ -10,6 +10,15 @@ from .permissions import IsOwnerOrReadOnly
 User = get_user_model()
 
 
+class AllUserListView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserProfileSerializer(users, many = True)
+        return Response(serializer.data)
+
+
 class UserProfileView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 

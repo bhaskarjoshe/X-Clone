@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserProfileView, UpdateUserProfileView, OtherUserProfileView
+from .views import UserProfileView, UpdateUserProfileView, OtherUserProfileView, AllUserListView
 
 app_name = 'app_user'
 
@@ -11,4 +11,7 @@ urlpatterns = [
     path(
         "profile/<int:pk>/", OtherUserProfileView.as_view(), name="other-user-profile"
     ),
+    path(
+        'api/all_users/', AllUserListView.as_view(), name = 'all-users-list'
+    )
 ]

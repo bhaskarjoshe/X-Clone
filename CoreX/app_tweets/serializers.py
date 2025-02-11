@@ -30,7 +30,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ["id", "author", "comment_content", "created_at", "is_deleted"]
+        fields = ["id", "author", "comment_content", "created_at", "is_deleted","parent_id"]
 
 
 class TweetSerializer(serializers.ModelSerializer):

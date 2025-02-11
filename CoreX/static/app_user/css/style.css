@@ -667,3 +667,384 @@ i{
 .post-edit-button:hover {
     background: #0d8ae8;
 }
+
+/* following list modal */
+.following-list-modal {
+    width: 90%;
+    height: 450px;
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background: rgba(30, 30, 30, 0.8);
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    z-index: 1000;
+    transition: transform 0.2s ease, background 0.3s ease;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.following-list-modal:hover {
+    background: rgba(40, 40, 40, 0.9);
+    transform: translateY(-2px);
+}
+
+.following-list-modal::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 700px) {
+    .following-list-modal {
+        width: 50%;
+        max-width: 700px;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .following-list-modal {
+        width: 30%;
+        max-width: 700px;
+    }
+}
+
+.following-list-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.close-following-modal {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.close-following-modal:hover {
+    color: #bbbbbb;
+}
+
+/* Modal Body */
+.modal-body {
+    background-color: rgba(40, 40, 40, 0.9);
+    margin-top:20px;
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: 15px;
+}
+
+/* Following Person Card */
+.following-person-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.following-person-card:hover {
+    background-color: rgba(70, 70, 70, 0.8);
+}
+
+.following-person-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.following-username-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.following-username-email strong {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.tweet-email {
+    color: #bbbbbb;
+    font-size: 0.85rem;
+}
+
+/* Button Styles */
+.following-follow{
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.following-follow:hover {
+    background-color: #0d8ae8;
+}
+
+/* followers modal */
+/* Followers list modal */
+.followers-list-modal {
+    width: 90%;
+    height: 450px;
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background: rgba(30, 30, 30, 0.8);
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    z-index: 1000;
+    transition: transform 0.2s ease, background 0.3s ease;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.followers-list-modal:hover {
+    background: rgba(40, 40, 40, 0.9);
+    transform: translateY(-2px);
+}
+
+.followers-list-modal::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 700px) {
+    .followers-list-modal {
+        width: 50%;
+        max-width: 700px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .followers-list-modal {
+        width: 30%;
+        max-width: 700px;
+    }
+}
+
+.followers-list-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.close-followers-modal {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.close-followers-modal:hover {
+    color: #bbbbbb;
+}
+
+/* Modal Body */
+.modal-body {
+    background-color: rgba(40, 40, 40, 0.9);
+    margin-top: 20px;
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: 15px;
+}
+
+/* Followers Person Card */
+.followers-person-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.followers-person-card:hover {
+    background-color: rgba(70, 70, 70, 0.8);
+}
+
+.followers-person-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.followers-username-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.followers-username-email strong {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.tweet-email {
+    color: #bbbbbb;
+    font-size: 0.85rem;
+}
+
+/* Button Styles */
+.followers-follow {
+    background-color: #ffffff;
+    color:black;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.followers-follow:hover {
+    transform: scale(1.01);
+}
+
+
+
+/* search bar */
+#search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: absolute;   
+    width: 200px;         
+    max-width: 300px;   
+    padding: 0.2rem;
+    z-index: 10;
+    top: 120%;         
+    left: 0;
+    background: rgb(30, 30, 30);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#search-results  {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+}
+
+#search-results div:last-child {
+    border-bottom: none;
+}
+
+
+.search-profile-pic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+}
+
+#search-results div{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap:0.2rem;
+}
+
+.search-result-item:hover{
+    transform: translateY(-2px);
+    /* background: rgba(40, 40, 40, 0.9); */
+    
+}
+
+.search-user-info{
+    display:flex;
+    flex-direction: column;
+}
+.search-user-email{
+    font-size:0.875rem;
+}
+
+@media(max-width: 1024px) {
+    .search-profile-pic {
+        display: none;
+    }
+
+    #search-results{
+       width: 150px; 
+    }
+}
+
+
+/* navbar right profile button */
+.user-profile-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 120px;
+    display: none;
+    z-index: 10;
+}
+
+.dropdown-item {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #333;
+}

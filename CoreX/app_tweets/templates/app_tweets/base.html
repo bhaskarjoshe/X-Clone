@@ -21,8 +21,17 @@
                 <div class="following">Following</div>
             </div>
             <div class="navbar-right">
-                <input type="text" placeholder="Search" class="search-bar">
+                <div style="position: relative;">
+                    <input type="text" placeholder="Search" class="search-bar">
+                    <div id="search-results" style="display: none;">
+
+                    </div>
+                </div>
                 <i class="fa-regular fa-user user-profile-button"></i>
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <div class="dropdown-item" id="viewProfile">Profile</div>
+                    <div class="dropdown-item" id="logout">Logout</div>
+                </div>
             </div>
         </nav>
 
@@ -66,40 +75,61 @@
             </div>
             
         </main>
-            {% comment %} Tweet Dialog {% endcomment %}
-            <dialog class='individual-tweet-modal'>
-                <i class="fa-solid fa-xmark close-tweet-modal"></i>
-                <div class="tweet-dialog-content">
-                    <div class="tweet-header">
-                        <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
-                        <div class="tweet-user-info">
-                            <strong class="tweet-username"></strong>
-                            <span class="tweet-email"></span>
-                            <span class="tweet-date"></span>
-                        </div>
-                    </div>
-                    <div class="tweet-body">
-                        <p class="tweet-text"></p>
-                        <div class="tweet-media"></div>
-                    </div>
-                    <div class="tweet-actions">
-                        <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> <span class="comment-count">0</span></span>
-                        <span class="tweet-action"><i class="fa-solid fa-retweet"></i> 0</span>
-                        <span class="tweet-action"><i class="fa-regular fa-heart"></i> <span class="like-count">0</span></span>
-                        <span class="tweet-action"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</span>
-                    </div>
-                    <form class="add-comment-form">
-                        {% csrf_token %}
-                        <input type="text" class="reply-text" placeholder="Post your reply" required>
-                        <button class='tweet-reply'>Reply</div>
-                    </form>
-                    <div class="tweet-comments">
-                        <h3>Comments</h3>
-                        <div class="comments-list"></div>
+        
+        {% comment %} Tweet Dialog {% endcomment %}
+        <dialog class='individual-tweet-modal'>
+            <i class="fa-solid fa-xmark close-tweet-modal"></i>
+            <div class="tweet-dialog-content">
+                <div class="tweet-header">
+                    <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
+                    <div class="tweet-user-info">
+                        <strong class="tweet-username"></strong>
+                        <span class="tweet-email"></span>
+                        <span class="tweet-date"></span>
                     </div>
                 </div>
-            </dialog> 
-    
+                <div class="tweet-body">
+                    <p class="tweet-text"></p>
+                    <div class="tweet-media"></div>
+                </div>
+                {% comment %} <div class="tweet-actions">
+                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> <span class="comment-count">0</span></span>
+                    <span class="tweet-action"><i class="fa-solid fa-retweet"></i> 0</span>
+                    <span class="tweet-action"><i class="fa-regular fa-heart"></i> <span class="like-count">0</span></span>
+                    <span class="tweet-action"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</span>
+                </div> {% endcomment %}
+                <form class="add-comment-form">
+                    {% csrf_token %}
+                    <input type="text" class="reply-text" placeholder="Post your reply" required>
+                    <button class='tweet-reply'>Reply</div>
+                </form>
+                <div class="tweet-comments">
+                    <h3>Comments</h3>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </dialog> 
+            
+
+        {% comment %} Edit Dialog {% endcomment %}
+        <dialog class='edit-tweet-modal'>
+            <i class = 'fa-solid fa-xmark close-edit-modal'></i>
+            <div class='edit-tweet-dialog-content'>
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
+                <div class="edit-tweet-user-info">
+                    <strong class="tweet-username"></strong>
+                    <span class="tweet-email"></span>
+                    <span class="tweet-date"></span>
+                </div>
+            </div>
+            <form class="edit-tweet-form">
+                {% csrf_token %}
+                <textarea class='edit-tweet-text' required></textarea>
+                <button type='submit' class='post-edit-button'>Submit</button>
+            </from>
+        </dialog>
+
+
     </div>
 
     <script src="{% static 'app_tweets/js/script.js' %}"></script>

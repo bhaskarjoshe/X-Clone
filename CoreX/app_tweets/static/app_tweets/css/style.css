@@ -40,7 +40,7 @@ body {
 
 .navbar-center {
     display: flex;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .navbar-center-active
@@ -225,6 +225,9 @@ body {
 
 @media (min-width: 600px) {
 
+    .navbar-center {
+        gap: 4rem;
+    }
     .navbar-left .logo {
         width: 50px;
     }
@@ -441,10 +444,223 @@ i{
 }
 
 
+/* edit tweet modal */
 .tweet-edit-icon{
     position: absolute;
     right:1rem;
     top:1rem;
     transform: scale(0.8);
     color:#888
+}
+
+
+.edit-tweet-modal {
+    width: 70%;
+    height: 450px;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background: rgba(30, 30, 30, 0.8);
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    z-index: 1000;
+    transition: transform 0.2s ease, background 0.3s ease;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.edit-tweet-modal:hover {
+    background: rgba(40, 40, 40, 0.9);
+    transform: translateY(-2px);
+}
+
+.edit-tweet-modal::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .edit-tweet-modal {
+        width: 65%;
+        max-width: 700px;
+    }
+}
+
+.edit-tweet-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.close-edit-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.close-edit-modal:hover {
+    color: #bbbbbb;
+}
+
+.edit-tweet-dialog-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.edit-tweet-dialog-content .profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.edit-tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-tweet-user-info strong {
+    font-size: 1rem;
+}
+
+.edit-tweet-user-info .tweet-email,
+.edit-tweet-user-info .tweet-date {
+    font-size: 0.85rem;
+    color: #bbbbbb;
+}
+
+.edit-tweet-text {
+    width: 100%;
+    min-height: 275px;
+    height : 275px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    resize: vertical;
+}
+
+.post-edit-button {
+    width: 30%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #1da1f2;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    float: right;
+}
+
+.post-edit-button:hover {
+    background: #0d8ae8;
+}
+
+
+/* search bar */
+#search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: absolute;   
+    width: 200px;         
+    max-width: 300px;   
+    padding: 0.2rem;
+    z-index: 10;
+    top: 120%;         
+    left: 0;
+    background: rgb(30, 30, 30);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#search-results  {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+}
+
+#search-results div:last-child {
+    border-bottom: none;
+}
+
+
+.search-profile-pic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+}
+
+#search-results div{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap:0.2rem;
+}
+
+.search-result-item:hover{
+    transform: translateY(-2px);
+    /* background: rgba(40, 40, 40, 0.9); */
+    
+}
+
+.search-user-info{
+    display:flex;
+    flex-direction: column;
+}
+.search-user-email{
+    font-size:0.875rem;
+}
+
+@media(max-width: 1024px) {
+    .search-profile-pic {
+        display: none;
+    }
+
+    #search-results{
+       width: 150px; 
+    }
+}
+
+/* navbar right profile button */
+.user-profile-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 120px;
+    display: none;
+    z-index: 10;
+}
+
+.dropdown-item {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #333;
 }

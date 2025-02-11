@@ -39,7 +39,6 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
             throw new Error(`HTTP error! Status: ${response.status}`)
         }
         const data = await response.json()
-
         const tweetContainer = document.getElementById("tweet-container")
         if (page === 1) {
             tweetContainer.innerHTML = ""
@@ -49,6 +48,7 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
         const currentUserId = currentUser.id
         const isPowerUser = currentUser.is_power_user
 
+        
         data.results.forEach(tweet => {
             const tweetElement = document.createElement("div")
             tweetElement.classList.add("tweet-card")
@@ -61,11 +61,11 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
             let editButton = ''
             if(tweet.author.id === currentUserId && isPowerUser){
                 editButton=`
-                    <span class="tweet-edit-icon" data-tweet-id="${tweet.id}" onclick="editTweet(${tweet.id})">
-                        <i class="fa-solid fa-user-pen"></i>
+                  <span class="tweet-edit-icon" data-tweet-id="${tweet.id}" ">
+                        <i class="fa-solid fa-user-pen edit-tweet-icon"></i>
                     </span>
                 `}
-
+               
             tweetElement.innerHTML = `
                 <div class="tweet-header">
                     <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
@@ -81,13 +81,12 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
                     ${renderMedia(tweet.media)}
                 </div>
                 <div class="tweet-actions" data-tweet-id='${tweet.id}'>
-                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> ${tweet.comments.length}</span>
+                    <span class="tweet-action"><i class="fa-regular fa-comment tweet-comment-icon"></i> ${tweet.comments.filter(comment => comment.parent_id === null).length}</span>
                     <span class="tweet-action"><i class="fa-solid fa-retweet"></i>0</span>
                     <span class="tweet-action ${likeButtonClass}"><i class="${heartIconClass} fa-heart like-tweet-icon ${likeButtonClass}"></i> ${tweet.likes.length}</span>
                     <span class="tweet-action"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</span>
                 </div>
             `
-
             tweetContainer.appendChild(tweetElement)
         })
 
@@ -237,9 +236,28 @@ async function uploadMedia(postTweetMediaUrl, selectedFile) {
 }
 
 
-//temporary logout button (later on to be converted to a dropdown which takes to profile and logout)
-const logoutButton = document.querySelector('.user-profile-button')
-logoutButton.addEventListener('click', async () => {
+//user-profile-button 
+const profileButton = document.querySelector('.user-profile-button')
+const dropdownMenu = document.getElementById('userDropdown')
+const viewProfile = document.getElementById('viewProfile')
+const logout = document.getElementById('logout')
+
+profileButton.addEventListener('click', ()=>{
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'
+})
+
+document.addEventListener('click', (event)=>{
+    if(!profileButton.contains(event.target) && !dropdownMenu.contains(event.target)){
+        dropdownMenu.style.display = "none"
+    }
+})
+
+viewProfile.addEventListener('click', ()=>{
+    window.location.href = '/profile/'
+})
+
+
+logout.addEventListener('click', async () => {
     const response = await fetch(logoutUrl, {
         method: "DELETE",
         headers: {
@@ -425,3 +443,115 @@ function toggleLikeUI(likeButton, likeIcon, isLiked) {
     }
 }
 
+//edit tweet (for power_users_only)
+const editTweetModal = document.querySelector('.edit-tweet-modal')
+const editTweetForm = editTweetModal.querySelector('.edit-tweet-form')
+
+//show-close edit modal
+document.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('edit-tweet-icon')){
+        console.log('YES')
+        const tweetElement = event.target.closest('.tweet-card')
+        if (tweetElement) {
+            const tweetId = tweetElement.getAttribute('data-tweet-id')
+            const tweetText = tweetElement.querySelector(".tweet-content").innerText.trim()
+            const username = tweetElement.querySelector(".tweet-user-info strong").innerText.trim()
+            const email = tweetElement.querySelector(".tweet-email").innerText.trim()
+            const date = tweetElement.querySelector('.tweet-date').innerText.trim()
+
+            editTweetModal.dataset.tweetId = tweetId
+            editTweetModal.querySelector('.edit-tweet-text').value = tweetText
+            editTweetModal.querySelector('.tweet-username').innerText = username
+            editTweetModal.querySelector('.tweet-email').innerText = email
+            editTweetModal.querySelector('.tweet-date').innerText = date
+    
+            editTweetModal.showModal()
+            
+        }
+    }
+})
+
+
+document.querySelector('.close-edit-modal').addEventListener('click', () => {
+    editTweetModal.close()
+})
+
+// tweet ediiting function
+editTweetForm.addEventListener('submit', async(event) => {
+    event.preventDefault();
+
+    const tweetId = editTweetModal.dataset.tweetId;
+    const updatedTweetText = editTweetModal.querySelector('.edit-tweet-text').value.trim();
+
+    const data = JSON.stringify({
+        tweet_content: updatedTweetText
+    });
+
+    try {
+        const response = await fetch(`/tweets/api/tweet/${tweetId}/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector("[name=csrfmiddlewaretoken]").value
+            },
+            body: data
+        });
+        if (response.ok) {
+            editTweetModal.close()
+            fetchCurrentUserTweets()
+            openContentDialog(tweetId, 'tweet')
+        }
+    } catch (error) {
+        console.log('Error updating tweet: ', error)
+    }
+})
+
+
+// search bar (implementing elastic search)
+document.querySelector('.search-bar').addEventListener('keyup', async function(){
+    let query = this.value.trim()
+    const searchResults = document.getElementById("search-results")
+
+    if (query.length > 2){
+        const response = await fetch(`/authenticate/api/search/?q=${query}`)
+        const data = await response.json()
+
+        let results = document.getElementById("search-results")
+        results.innerHTML = ''
+
+        if (data.users.length === 0) {
+            searchResults.style.display = "none"
+            return
+        }
+
+        data.users.forEach(user=>{
+            let userData = document.createElement("div")
+            userData.classList.add("search-result-item")
+            const username= user.username.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+            const email = user.email.split('@')[0]
+
+            userData.innerHTML =`
+                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="search-profile-pic">
+                <div class= 'search-user-info'>
+                    <div class='search-user-name'>${username}</div>
+                    <div class='search-user-email'>@${email}</div>
+                </div>
+                `
+            results.appendChild(userData)
+        })
+        searchResults.style.display = "block"
+    }
+    else {
+        document.getElementById("search-results").innerHTML = ""
+        searchResults.style.display = "none"
+    }
+})
+
+document.addEventListener('click', (event) => {
+    const searchBar = document.querySelector('.search-bar')
+    const searchResults = document.getElementById('search-results')
+
+    if (!searchBar.contains(event.target) && !searchResults.contains(event.target)) {
+        searchResults.style.display = "none"
+    }
+})

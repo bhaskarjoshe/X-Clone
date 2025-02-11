@@ -7,7 +7,6 @@ from app_user.views_frontend import profile_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    #api routes
     # normal routes
     path('', landing_page, name='landing_page'),
     path('homepage/', homepage, name='homepage'),

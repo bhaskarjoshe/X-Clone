@@ -12,18 +12,24 @@ class UserSerializer(serializers.ModelSerializer):
 
 class FollowerSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source="follower.username")
+    email = serializers.EmailField(source="follower.email")
+    is_power_user = serializers.BooleanField(source="followed.is_power_user")
+
 
     class Meta:
         model = Follow
-        fields = ["id", "username"]
+        fields = ["id", "username", "email", 'is_power_user']
 
 
 class FollowingSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source="followed.username")
+    email = serializers.EmailField(source="followed.email") 
+    is_power_user = serializers.BooleanField(source="followed.is_power_user")
+
 
     class Meta:
         model = Follow
-        fields = ["id", "username"]
+        fields = ["id", "username", 'email', 'is_power_user']
 
 
 class FollowCreateSerializer(serializers.ModelSerializer):
