@@ -84,9 +84,7 @@ else:
         },
     }
     ES_CLIENT = Elasticsearch([LOCAL_ELASTICSEARCH_URL])
-
-
-connections.create_connection(alias='default', hosts=ELASTICSEARCH_DSL['default']['hosts'])
+# connections.create_connection(alias='default', hosts=ELASTICSEARCH_DSL['default']['hosts'])
 
 
 
