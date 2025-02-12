@@ -18,6 +18,9 @@ sqlparse==0.5.3
 typing_extensions==4.12.2
 wheel==0.45.1
 whitenoise==6.8.2
-elasticsearch-dsl
-django_elasticsearch_dsl
+django-elasticsearch-dsl-drf==0.22.5
+django-elasticsearch-dsl==7.4
+elastic-transport==8.17.0
+elasticsearch==7.10.1
+elasticsearch-dsl==7.4.0 
 
