@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from elasticsearch_dsl import connections
-
+from elasticsearch import Elasticsearch
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,8 +29,8 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ["main-project-x.onrender.com", "127.0.0.1", "localhost"]
 
@@ -54,12 +54,38 @@ INSTALLED_APPS = [
     "django_elasticsearch_dsl"
 ]
 
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': ['http://localhost:9200'], 
-        'timeout': 10,
+LOCAL_ELASTICSEARCH_URL = "http://127.0.0.1:9200/"
+REMOTE_ELASTICSEARCH_URL = os.getenv("ELASTICSEARCH_URL", LOCAL_ELASTICSEARCH_URL)
+
+if os.getenv("RENDER"):  
+    BONSAI_USERNAME = os.getenv("BONSAI_USERNAME", "")
+    BONSAI_PASSWORD = os.getenv("BONSAI_PASSWORD", "")
+
+    ELASTICSEARCH_DSL = {
+        'default': {
+            'hosts': REMOTE_ELASTICSEARCH_URL,
+            'timeout': 30,
+            'http_auth': (BONSAI_USERNAME, BONSAI_PASSWORD) if BONSAI_USERNAME and BONSAI_PASSWORD else None,
+            'verify_certs': False,
+            'headers': {"User-Agent": "Elasticsearch"},
+        },
     }
-}
+
+    ES_CLIENT = Elasticsearch(
+        [REMOTE_ELASTICSEARCH_URL],
+        basic_auth=(BONSAI_USERNAME, BONSAI_PASSWORD) if BONSAI_USERNAME and BONSAI_PASSWORD else None,
+        request_timeout=30,
+        verify_certs=False,
+        headers={"User-Agent": "Elasticsearch"}
+    )
+else:
+    ELASTICSEARCH_DSL = {
+        'default': {
+            'hosts': LOCAL_ELASTICSEARCH_URL
+        },
+    }
+    ES_CLIENT = Elasticsearch([LOCAL_ELASTICSEARCH_URL])
+
 
 connections.create_connection(alias='default', hosts=ELASTICSEARCH_DSL['default']['hosts'])
 
