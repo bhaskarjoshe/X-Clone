@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 from .serializers import RegisterSerializer, LoginSerializer, UserProfileSerializer
 
 from elasticsearch_dsl.query import MultiMatch
-from .serach_indexes import UserDocument
+from .search_indexes import UserDocument
 
 User = get_user_model()
 

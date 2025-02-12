@@ -450,7 +450,6 @@ const editTweetForm = editTweetModal.querySelector('.edit-tweet-form')
 //show-close edit modal
 document.addEventListener('click', async (event) => {
     if (event.target.classList.contains('edit-tweet-icon')){
-        console.log('YES')
         const tweetElement = event.target.closest('.tweet-card')
         if (tweetElement) {
             const tweetId = tweetElement.getAttribute('data-tweet-id')
@@ -498,7 +497,6 @@ editTweetForm.addEventListener('submit', async(event) => {
         });
         if (response.ok) {
             editTweetModal.close()
-            fetchCurrentUserTweets()
             openContentDialog(tweetId, 'tweet')
         }
     } catch (error) {
