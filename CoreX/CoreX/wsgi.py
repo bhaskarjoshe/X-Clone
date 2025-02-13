@@ -13,4 +13,8 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "CoreX.settings")
 
-application = get_wsgi_application()
+import os
+
+if os.getenv("RUNNING_CELERY") != "true":
+    from django.core.wsgi import get_wsgi_application
+    application = get_wsgi_application()

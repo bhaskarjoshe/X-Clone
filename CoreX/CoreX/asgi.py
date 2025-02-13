@@ -13,4 +13,6 @@ from django.core.asgi import get_asgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "CoreX.settings")
 
-application = get_asgi_application()
+if os.getenv("RUNNING_CELERY") != "true":
+    from django.core.asgi import get_asgi_application
+    application = get_asgi_application()
