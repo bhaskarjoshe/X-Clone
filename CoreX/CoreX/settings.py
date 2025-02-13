@@ -29,8 +29,8 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["main-project-x.onrender.com", "127.0.0.1", "localhost"]
 
@@ -51,42 +51,47 @@ INSTALLED_APPS = [
     "app_tweets",
     "app_comments",
     "app_follow",
-    "django_elasticsearch_dsl"
+    "django_elasticsearch_dsl",
 ]
 
 LOCAL_ELASTICSEARCH_URL = "http://127.0.0.1:9200/"
 REMOTE_ELASTICSEARCH_URL = os.getenv("ELASTICSEARCH_URL", LOCAL_ELASTICSEARCH_URL)
 
-if os.getenv("RENDER"):  
+if os.getenv("RENDER"):
     BONSAI_USERNAME = os.getenv("BONSAI_USERNAME", "")
     BONSAI_PASSWORD = os.getenv("BONSAI_PASSWORD", "")
 
     ELASTICSEARCH_DSL = {
-        'default': {
-            'hosts': REMOTE_ELASTICSEARCH_URL,
-            'timeout': 30,
-            'http_auth': (BONSAI_USERNAME, BONSAI_PASSWORD) if BONSAI_USERNAME and BONSAI_PASSWORD else None,
-            'verify_certs': False,
-            'headers': {"User-Agent": "Elasticsearch"},
+        "default": {
+            "hosts": REMOTE_ELASTICSEARCH_URL,
+            "timeout": 30,
+            "http_auth": (
+                (BONSAI_USERNAME, BONSAI_PASSWORD)
+                if BONSAI_USERNAME and BONSAI_PASSWORD
+                else None
+            ),
+            "verify_certs": False,
+            "headers": {"User-Agent": "Elasticsearch"},
         },
     }
 
     ES_CLIENT = Elasticsearch(
         [REMOTE_ELASTICSEARCH_URL],
-        basic_auth=(BONSAI_USERNAME, BONSAI_PASSWORD) if BONSAI_USERNAME and BONSAI_PASSWORD else None,
+        basic_auth=(
+            (BONSAI_USERNAME, BONSAI_PASSWORD)
+            if BONSAI_USERNAME and BONSAI_PASSWORD
+            else None
+        ),
         request_timeout=30,
         verify_certs=True,
     )
 else:
     ELASTICSEARCH_DSL = {
-        'default': {
-            'hosts': LOCAL_ELASTICSEARCH_URL
-        },
+        "default": {"hosts": LOCAL_ELASTICSEARCH_URL},
     }
     ES_CLIENT = Elasticsearch([LOCAL_ELASTICSEARCH_URL])
 
 # connections.create_connection(alias='default', hosts=ELASTICSEARCH_DSL['default']['hosts'])
-
 
 
 REST_FRAMEWORK = {
@@ -112,7 +117,7 @@ ROOT_URLCONF = "CoreX.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -190,3 +195,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'

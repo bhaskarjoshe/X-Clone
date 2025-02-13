@@ -14,7 +14,7 @@ User = get_user_model()
 
 class NonFollowingUsersPagination(PageNumberPagination):
     page_size = 3
-    page_query_param = 'page'
+    page_query_param = "page"
     max_page_size = 10
 
 
@@ -84,11 +84,17 @@ class NonFollowingUsersView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        following_users_ids = set(Follow.objects.filter(follower=request.user).values_list('followed_id', flat=True))
-        users = User.objects.exclude(id__in=following_users_ids).exclude(id=request.user.id)
-        
+        following_users_ids = set(
+            Follow.objects.filter(follower=request.user).values_list(
+                "followed_id", flat=True
+            )
+        )
+        users = User.objects.exclude(id__in=following_users_ids).exclude(
+            id=request.user.id
+        )
+
         paginator = NonFollowingUsersPagination()
         result_page = paginator.paginate_queryset(users, request)
-        
-        serializer = UserSerializer(result_page, many = True)
+
+        serializer = UserSerializer(result_page, many=True)
         return Response(serializer.data)

@@ -4,21 +4,26 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields =[
+        fields = [
             "id",
             "username",
             "email",
             "profile_picture",
-            ]
+        ]
 
 
 class CommentSerializer(serializers.ModelSerializer):
     author = UserSerializer()
-    author_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), source="author", write_only=True)
-    parent_id = serializers.PrimaryKeyRelatedField(queryset=Comment.objects.all(), source="parent", allow_null=True, required=False)
+    author_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(), source="author", write_only=True
+    )
+    parent_id = serializers.PrimaryKeyRelatedField(
+        queryset=Comment.objects.all(), source="parent", allow_null=True, required=False
+    )
     replies = serializers.SerializerMethodField()
 
     class Meta:

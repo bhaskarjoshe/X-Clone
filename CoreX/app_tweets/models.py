@@ -11,8 +11,9 @@ class Tweet(models.Model):
     updated_at = models.DateTimeField(null=True, blank=True)
     is_pinned = models.BooleanField(default=False)
     is_deleted = models.BooleanField(default=False)
-    media = models.ManyToManyField("Media", related_name="tweets", blank=True)  # Multiple media files
-
+    media = models.ManyToManyField(
+        "Media", related_name="tweets", blank=True
+    )
 
     def __str__(self):
         return self.tweet_content[:50]

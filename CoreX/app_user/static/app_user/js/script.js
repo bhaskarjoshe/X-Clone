@@ -12,13 +12,15 @@ let currentPage = 1
 let nonFollowedPeopleCurrentPage = 1
 
 // toggle between profile
-const homepageToggle = document.querySelector('.go-to-homepage')
+const homepageToggle = document.querySelectorAll('.go-to-homepage')
 const searchToggle = document.querySelector('.go-to-searchbar')
 const profileToggle = document.querySelector('.go-to-profile')
 
 
-homepageToggle.addEventListener('click', (event)=>{
-    window.location.href = homepageUrl  
+homepageToggle.forEach(toggle=>{
+    toggle.addEventListener('click', (event)=>{
+        window.location.href = homepageUrl  
+    })
 })
 
 searchToggle.addEventListener('click', (event)=>{
@@ -221,6 +223,7 @@ document.addEventListener('click', async (event)=>{
             currentButton.style.color = 'white'
             currentButton.style.backgroundColor = '#1da1f2' 
         }
+        fetchFollowerFollowingCount()
     }
 })
 
@@ -515,7 +518,7 @@ document.addEventListener('click', async (event)=>{
                         <span class="tweet-email">@${following.email.split('@')[0]}</span>
                     </div>
             </div>
-            <button class='following-follow'>Follow</button>
+            <button class='following-follow follow-button' data-user-id=${following.following_id}>Unfollow</button>
             `
             modalBody.appendChild(personCard)
         })
@@ -535,12 +538,27 @@ const followersListModal = document.querySelector('.followers-list-modal')
 document.addEventListener('click', async (event) => {
     if (event.target.classList.contains('followers')) {
         const followersList = await fetchFollowersList()
+        const followingList = await fetchFollowingList()
+        const followingIds = new Set(followingList.map(user=>user.following_id))
+
         const modalBody = followersListModal.querySelector('.modal-body')
         modalBody.innerText = ''
         
         followersList.forEach(follower => {
             const personCard = document.createElement('div')
             personCard.classList.add('followers-person-card')
+            
+            const isFollowing = followingIds.has(follower.follower_id)
+            const followButton = document.createElement('button')
+            followButton.classList.add('followers-follow', 'follow-button')
+            followButton.setAttribute('data-user-id', follower.follower_id)
+            followButton.innerText = isFollowing ? 'Unfollow' : 'Follow'
+
+            if(isFollowing){
+                followButton.style.backgroundColor = 'white'
+                followButton.style.color = 'black'
+            }
+
             personCard.innerHTML = `
             <div class='followers-person-info'>
                 <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
@@ -549,8 +567,8 @@ document.addEventListener('click', async (event) => {
                     <span class="tweet-email">@${follower.email.split('@')[0]}</span>
                 </div>
             </div>
-            <button class='followers-follow'>UnFollow</button>
             `
+            personCard.appendChild(followButton)
             modalBody.appendChild(personCard)
         })
         followersListModal.showModal()

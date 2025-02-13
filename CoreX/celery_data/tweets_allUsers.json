@@ -1,0 +1,1145 @@
+[
+    {
+        "id": 3,
+        "username": "vinay-reddy",
+        "email": "vinay_reddy@gmail.com",
+        "profile_picture": null,
+        "bio": "Tech enthusiast, coder, and problem solver. Exploring the world of web development and always learning something new. Let's connect! \ud83c\udf10",
+        "is_power_user": false,
+        "last_login": "2025-02-08T09:02:23.345400Z",
+        "date_joined": "2025-01-31T14:22:56.105000Z",
+        "tweets": [
+            {
+                "id": 36,
+                "tweet_content": "\ud83d\udca1 #LifeHack",
+                "author": {
+                    "id": 3,
+                    "username": "vinay-reddy",
+                    "email": "vinay_reddy@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T18:12:04.772294Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 29,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T04:06:53.640776Z"
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 13,
+                        "file": "/media/tweet_media/lifehack.gif",
+                        "uploaded_at": "2025-02-05T18:12:04.777499Z"
+                    }
+                ],
+                "comments": []
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "username": "kaushal-kashyap",
+        "email": "kaushal_kashyap@gmail.com",
+        "profile_picture": null,
+        "bio": "Just wandering through life, collecting memories and chasing sunsets. \ud83c\udf05\u2728",
+        "is_power_user": false,
+        "last_login": "2025-02-07T14:26:54.946552Z",
+        "date_joined": "2025-02-04T10:26:33.516113Z",
+        "tweets": [
+            {
+                "id": 35,
+                "tweet_content": "Just traveled to a hidden peak \ud83c\udf2b\ufe0f\ud83c\udfde\ufe0f. The mist wrapped around the landscape like nature's mystery blanket. Can't see the top, but the journey was surreal. Sometimes, the beauty is in the unknown. #TravelVibes #NatureMagic #Wanderlust",
+                "author": {
+                    "id": 6,
+                    "username": "kaushal-kashyap",
+                    "email": "kaushal_kashyap@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T18:06:32.574432Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 27,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-07T14:27:31.986000Z"
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 12,
+                        "file": "/media/tweet_media/mountains.jpg",
+                        "uploaded_at": "2025-02-05T18:06:32.587913Z"
+                    }
+                ],
+                "comments": []
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "username": "rohit-joshi",
+        "email": "rohit_joshi@gmail.com",
+        "profile_picture": null,
+        "bio": "Explorer of ideas, seeker of stories, and a lover of good conversations. Always chasing experiences, coffee, and a little bit of chaos. \ud83c\udf0d\u2615\u2728",
+        "is_power_user": false,
+        "last_login": "2025-02-11T12:40:45.067236Z",
+        "date_joined": "2025-01-31T14:27:55.333000Z",
+        "tweets": [
+            {
+                "id": 1,
+                "tweet_content": "Just had the best coffee at the new caf\u00e9 in town! Highly recommend it to anyone who loves a good cup of joe! \u2615\ufe0f #coffee #cafe #morningvibes",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-01T06:11:52.933167Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 7,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-03T05:13:09.388965Z"
+                    }
+                ],
+                "media": [],
+                "comments": [
+                    {
+                        "id": 3,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "Sounds amazing! I\u2019ll have to check it out. Always looking for new spots with great coffee. \u2615\ufe0f #coffeeaddict",
+                        "created_at": "2025-02-01T11:33:09.183638Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 4,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "I agree, it\u2019s the best!",
+                        "created_at": "2025-02-01T11:44:18.447879Z",
+                        "is_deleted": false,
+                        "parent_id": 3
+                    },
+                    {
+                        "id": 5,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "I totally agree! That place has the best coffee!",
+                        "created_at": "2025-02-01T11:46:18.568981Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 6,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "I totally agree! That place has the best coffee!",
+                        "created_at": "2025-02-01T11:47:31.728917Z",
+                        "is_deleted": true,
+                        "parent_id": 4
+                    },
+                    {
+                        "id": 7,
+                        "author": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "I will try to improve",
+                        "created_at": "2025-02-03T05:58:30.933078Z",
+                        "is_deleted": false,
+                        "parent_id": 4
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "tweet_content": "Excited for the weekend getaway! Can't wait to explore new places and make memories with friends! \u2708\ufe0f\ud83c\udf0d #travel #adventure #weekendvibes",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-01T06:12:45.039587Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 38,
+                        "user": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "created_at": "2025-02-08T10:03:38.477355Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 5,
+                "tweet_content": "Just finished working on a new feature for my app! Feeling great about the progress. It's always rewarding to see your code come to life. Can't wait to share the final product with everyone soon. Stay tuned for more updates! #developerlife #coding #techcommunity",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-03T04:46:47.228354Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 6,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-03T04:48:54.641482Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 38,
+                "tweet_content": "College life isn't just about classes and exams; it's about the late-night chats, impromptu adventures, and the lifelong friendships forged along the way. Cheers to the memories we've made and the ones yet to come! \ud83c\udf93 #CollegeLife #FriendsForever #Memories",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-06T04:42:49.329974Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 21,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-07T04:58:36.186999Z"
+                    },
+                    {
+                        "id": 31,
+                        "user": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T05:02:59.550991Z"
+                    },
+                    {
+                        "id": 37,
+                        "user": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "created_at": "2025-02-08T10:03:30.115226Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "username": "marques-brownlee",
+        "email": "marques-brownlee@gmail.com",
+        "profile_picture": null,
+        "bio": "Writing my own story, one adventure at a time. Dreamer, observer, and collector of moments. \ud83c\udf3f\ud83d\udcd6",
+        "is_power_user": true,
+        "last_login": "2025-02-12T06:01:05.645702Z",
+        "date_joined": "2025-02-01T05:46:21.012505Z",
+        "tweets": [
+            {
+                "id": 4,
+                "tweet_content": "Just wrapped up a week full of meetings and deadlines. It\u2019s been a rollercoaster, but feeling accomplished. Now, it\u2019s time to unwind and recharge for the next week. A little self-care goes a long way, so I\u2019m going to enjoy some peace and quiet. #selfcare #workhardplayhard #recharge",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-01T06:45:56.263309Z",
+                "updated_at": null,
+                "is_pinned": true,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 2,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-01T06:49:06.585136Z"
+                    },
+                    {
+                        "id": 3,
+                        "user": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "created_at": "2025-02-01T07:24:26.842208Z"
+                    }
+                ],
+                "media": [],
+                "comments": [
+                    {
+                        "id": 1,
+                        "author": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Sounds like an awesome read! I'll definitely check it out. Do you have any recommendations for other thrillers?",
+                        "created_at": "2025-02-01T06:50:16.057383Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 2,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "Glad you liked it! If you're into thrillers, you might enjoy *Gone Girl* or *The Girl with the Dragon Tattoo*. Let me know if you want more recommendations!",
+                        "created_at": "2025-02-01T10:26:58.405006Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "tweet_content": "Technology is not just about gadgets and code; it's about creating solutions that shape the future. The possibilities are endless when innovation meets passion. \ud83d\udcbb\ud83d\ude80 #TechInnovation #FutureOfTech",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T13:47:32.412044Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 10,
+                "tweet_content": "Nothing beats the calming sound of the waves and the warmth of the sand between your toes. \ud83c\udf0a\u2600\ufe0f #BeachVibes #OceanBreeze #SeasideSerenity",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:16:16.516243Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": true,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 3,
+                "tweet_content": "Excited to start my weekend getaway! Sometimes, a change of scenery is all it takes to clear the mind and reset. Can\u2019t wait to explore new places, try some local food, and just enjoy some much-needed relaxation. Here\u2019s to making the most of these next few days! \ud83c\udf04\ud83c\udf74\ud83e\uddd8\u200d\u2642\ufe0f #weekendvibes #travel #selfcare",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-01T06:17:58.691967Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": true,
+                "likes": [
+                    {
+                        "id": 5,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-02T13:39:44.376889Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 11,
+                "tweet_content": "Nothing beats the calming sound of the waves and the warmth of the sand between your toes. \ud83c\udf0a\u2600\ufe0f #BeachVibes #OceanBreeze #SeasideSerenity",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:17:32.586345Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": true,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 12,
+                "tweet_content": "Nothing beats the calming sound of the waves and the warmth of the sand between your toes. \ud83c\udf0a\u2600\ufe0f #BeachVibes #OceanBreeze #SeasideSerenity",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:20:19.677717Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 13,
+                "tweet_content": "Let the gentle waves and the golden sunset melt all your stress away. \ud83c\udf0a\ud83c\udf05 #RelaxingVibes #BeachDays #PeacefulMoments",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:21:56.366957Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 14,
+                "tweet_content": "Diving into the crystal-clear water, feeling weightless and free. \ud83c\udfca\u200d\u2642\ufe0f\ud83c\udf0a #SwimmingVibes #UnderTheSurface #OceanEscape",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:22:32.941648Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 15,
+                "tweet_content": "Every stroke in the water feels like a reset for the soul. \ud83c\udfca\u200d\u2640\ufe0f\ud83d\udc99 #SwimmingTherapy #RefreshAndRenew #WaterHealing",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:28:05.797106Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 16,
+                "tweet_content": "Every stroke in the water feels like a reset for the soul. \ud83c\udfca\u200d\u2640\ufe0f\ud83d\udc99 #SwimmingTherapy #RefreshAndRenew #WaterHealing",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:29:07.672230Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 17,
+                "tweet_content": "Swimming is more than just exercise \u2013 it\u2019s a moment to reset, clear the mind, and feel free. Every stroke brings a sense of calm and connection with the water. \ud83c\udf0a\ud83c\udfca\u200d\u2640\ufe0f #SwimmingBliss #WaterHealing #MindfulMovement",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:35:17.975362Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 18,
+                "tweet_content": "Embracing the freedom of the water, where every swim is a new adventure. \ud83c\udf0a\ud83c\udfca\u200d\u2642\ufe0f #SwimmingJoy #FlowWithTheWater #EndlessSummer",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:38:15.975698Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 34,
+                "tweet_content": "NEW VIDEO - I Tried Samsung's Secret Android XR Headset, and it was awesome. Think of it as the Nexus/Pixel of headsets. Full of smart software features like this. Coming this year.",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T18:00:37.891924Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [
+                    {
+                        "id": 11,
+                        "file": "/media/tweet_media/marques_video1.mp4",
+                        "uploaded_at": "2025-02-05T18:00:37.901095Z"
+                    }
+                ],
+                "comments": []
+            },
+            {
+                "id": 19,
+                "tweet_content": "Escaping to paradise, where the only plan is to relax, unwind, and soak up the sun. \ud83c\udf34\u2600\ufe0f #VacationVibes #EscapeToParadise #RelaxAndRecharge...",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:39:47.765698Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 20,
+                "tweet_content": "Leaving the stress behind and embracing the peace of a much-needed getaway. \ud83c\udf34\u2728 #VacationMode #TravelGoals #UnwindAndRelax",
+                "author": {
+                    "id": 5,
+                    "username": "marques-brownlee",
+                    "email": "marques-brownlee@gmail.com",
+                    "is_power_user": true
+                },
+                "created_at": "2025-02-05T14:43:20.014821Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "username": "bhaskar-joshi",
+        "email": "bhaskar_joshi@gmail.com",
+        "profile_picture": null,
+        "bio": "Living for the little moments, big dreams, and good vibes. Always curious, always growing. \u2600\ufe0f\ud83c\udf0a",
+        "is_power_user": false,
+        "last_login": "2025-02-12T09:11:36.608565Z",
+        "date_joined": "2025-01-31T13:58:33.502000Z",
+        "tweets": [
+            {
+                "id": 6,
+                "tweet_content": "Just another day building cool things with Django and DRF! \ud83d\ude80 #Coding #WebDevelopment",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T13:41:07.465838Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 7,
+                "tweet_content": "Travel isn\u2019t just about reaching a destination; it\u2019s about the experiences, the people you meet, and the memories you create along the way. Every journey tells a story\u2014make yours unforgettable. \ud83c\udf0d\u2708\ufe0f #Wanderlust #TravelMore",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T13:42:47.312484Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 8,
+                "tweet_content": "Inner peace isn\u2019t found in the noise of the world but in the silence within. Breathe, let go, and embrace the serenity that comes from being present in the moment. \ud83c\udf3f\u2728 #InnerPeace #Mindfulness",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T13:43:50.647843Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 21,
+                "tweet_content": "Find peace in the stillness, let go of the noise.\r\nEmbrace the quiet moments, where the mind can rejoice.\r\nBreathe in calm, release the stress.\r\nIn simplicity, we find our rest.",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T14:49:16.764041Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 22,
+                "tweet_content": "Peace isn\u2019t found in perfection, but in moments of stillness. Let the mind rest, breathe deeply, and let go. \ud83d\udd4a\ufe0f\u2728 #MentalPeace #InnerCalm #BreatheAndRelax",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T14:54:45.168460Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 23,
+                "tweet_content": "Animals have a way of teaching us unconditional love, loyalty, and the simple joy of living in the moment. \ud83d\udc3e\ud83d\udc96 #AnimalLove #FurryFriends #PureJoy",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T14:57:32.454998Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 29,
+                "tweet_content": "The ocean stirs the heart, inspires the imagination, and brings eternal joy to the soul. \ud83c\udf0a\ud83d\udc99 #OceanVibes #EndlessHorizons #SeaBreeze",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T16:58:42.765904Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [
+                    {
+                        "id": 4,
+                        "file": "/media/tweet_media/water-fun.png",
+                        "uploaded_at": "2025-02-05T16:58:42.772600Z"
+                    }
+                ],
+                "comments": []
+            },
+            {
+                "id": 30,
+                "tweet_content": "The Lamborghini Urus is a perfect blend of luxury, performance, and style. \ud83d\ude99\ud83d\udca8 With a 650-hp twin-turbo V8 engine, it accelerates from 0-60 mph in just 3.1 seconds! The king of SUVs combines power, speed, and elegance in one stunning package. #LamborghiniUrus #LuxurySUV #Supercar",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T17:06:18.816986Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [],
+                "media": [
+                    {
+                        "id": 6,
+                        "file": "/media/tweet_media/video.mp4",
+                        "uploaded_at": "2025-02-05T17:06:18.826156Z"
+                    }
+                ],
+                "comments": []
+            },
+            {
+                "id": 33,
+                "tweet_content": "Started doing some self-introspection... \r\n\ud83c\udf55\ud83e\udd14 #DeepThoughts #SelfReflection",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T17:42:45.707459Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 20,
+                        "user": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-07T04:33:35.828958Z"
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 10,
+                        "file": "/media/tweet_media/introspection.gif",
+                        "uploaded_at": "2025-02-05T17:42:45.719428Z"
+                    }
+                ],
+                "comments": []
+            },
+            {
+                "id": 37,
+                "tweet_content": "\u091c\u0940\u0935\u0928 \u092e\u0947\u0902 \u0938\u092b\u0932\u0924\u093e \u092a\u093e\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0939\u0930 \u092e\u0941\u0936\u094d\u0915\u093f\u0932 \u0915\u094b \u092a\u093e\u0930 \u0915\u0930\u0928\u093e \u091c\u093c\u0930\u0942\u0930\u0940 \u0939\u0948, \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0939\u0930 \u0905\u0902\u0927\u0947\u0930\u0940 \u0930\u093e\u0924 \u0915\u0947 \u092c\u093e\u0926 \u090f\u0915 \u0928\u092f\u093e \u0938\u0935\u0947\u0930\u093e \u0906\u0924\u093e \u0939\u0948\u0964 #\u091c\u0940\u0935\u0928 #\u092a\u094d\u0930\u0947\u0930\u0923\u093e #\u0938\u092b\u0932\u0924\u093e",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-06T04:40:18.968138Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 25,
+                        "user": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-07T07:27:38.126894Z"
+                    }
+                ],
+                "media": [],
+                "comments": [
+                    {
+                        "id": 20,
+                        "author": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "\u0938\u0939\u0940 \u0915\u0939\u093e \u0906\u092a\u0928\u0947! \u091c\u0940\u0935\u0928 \u092e\u0947\u0902 \u0938\u092b\u0932\u0924\u093e \u0935\u0939\u0940 \u092a\u093e\u0924\u093e \u0939\u0948, \u091c\u094b \u092e\u0941\u0936\u094d\u0915\u093f\u0932\u094b\u0902 \u0915\u093e \u0938\u093e\u092e\u0928\u093e \u0915\u0930\u0924\u093e \u0939\u0948 \u0914\u0930 \u0915\u092d\u0940 \u0939\u093e\u0930 \u0928\u0939\u0940\u0902 \u092e\u093e\u0928\u0924\u093e\u0964 \u0939\u0930 \u0915\u0920\u093f\u0928\u093e\u0908 \u090f\u0915 \u0928\u0908 \u0936\u0941\u0930\u0941\u0906\u0924 \u0915\u0940 \u0913\u0930 \u0907\u0936\u093e\u0930\u093e \u0915\u0930\u0924\u0940 \u0939\u0948\u0964 \ud83c\udf05 #\u092a\u094d\u0930\u0947\u0930\u0923\u093e #\u0938\u092a\u0928\u0947 #\u0938\u092b\u0932\u0924\u093e",
+                        "created_at": "2025-02-07T14:27:26.573682Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    }
+                ]
+            },
+            {
+                "id": 39,
+                "tweet_content": "Excited to dive into a new project! \ud83d\ude80 There's something incredibly satisfying about starting fresh, brainstorming ideas, and turning visions into reality. Let's make this journey unforgettable. \ud83d\udca1 #NewProject #Innovation #Creativity",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-06T04:49:05.284819Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 8,
+                        "user": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-06T05:44:24.902759Z"
+                    },
+                    {
+                        "id": 33,
+                        "user": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T06:29:07.721174Z"
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 14,
+                        "file": "/media/tweet_media/Animation_-_1738817076042.gif",
+                        "uploaded_at": "2025-02-06T04:49:05.291425Z"
+                    }
+                ],
+                "comments": [
+                    {
+                        "id": 9,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "What's your first step in turning those visions into reality? Always curious about other people's processes.",
+                        "created_at": "2025-02-06T05:48:25.046664Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 10,
+                        "author": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Starting fresh is such a great feeling! Enjoy the process. It's where the best stuff happens.",
+                        "created_at": "2025-02-06T05:49:31.765477Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 11,
+                        "author": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Fresh starts bring endless possibilities! \ud83d\ude80 Wishing you a journey filled with creativity and breakthroughs. Can't wait to see what unfolds! \ud83d\udca1 #NewBeginnings #Innovation",
+                        "created_at": "2025-02-07T14:12:27.822292Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 12,
+                        "author": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Fresh starts bring endless possibilities! \ud83d\ude80 Wishing you a journey filled with creativity and breakthroughs. Can't wait to see what unfolds! \ud83d\udca1 #NewBeginnings #Innovation",
+                        "created_at": "2025-02-07T14:19:31.560731Z",
+                        "is_deleted": false,
+                        "parent_id": 10
+                    },
+                    {
+                        "id": 21,
+                        "author": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Process > Product.",
+                        "created_at": "2025-02-08T04:07:40.899522Z",
+                        "is_deleted": false,
+                        "parent_id": 9
+                    }
+                ]
+            },
+            {
+                "id": 40,
+                "tweet_content": "Embrace the journey. \u2728",
+                "author": {
+                    "id": 2,
+                    "username": "bhaskar-joshi",
+                    "email": "bhaskar_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-06T05:35:32.528842Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 30,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T05:02:33.980947Z"
+                    },
+                    {
+                        "id": 34,
+                        "user": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T06:29:11.762467Z"
+                    },
+                    {
+                        "id": 36,
+                        "user": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T09:18:40.580053Z"
+                    },
+                    {
+                        "id": 39,
+                        "user": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "created_at": "2025-02-08T12:55:30.298258Z"
+                    }
+                ],
+                "media": [],
+                "comments": [
+                    {
+                        "id": 8,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "So true \u2728 It's all about the journey.",
+                        "created_at": "2025-02-06T05:47:21.653934Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 13,
+                        "author": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Embracing the journey takes me back to a project I once started, unsure of where it would lead. Step by step, things started to make sense, and what seemed like a challenge turned into a valuable lesson. It\u2019s the unexpected twists that make the ride worthwhile. \ud83c\udf31 #JourneyOverDestination #Growth",
+                        "created_at": "2025-02-07T14:21:19.142601Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 14,
+                        "author": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Reminds me of the time I almost gave up on a project, but pushing through taught me that persistence pays off. Every step counts. \ud83c\udf1f #KeepGoing #SmallWins",
+                        "created_at": "2025-02-07T14:22:08.156728Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 15,
+                        "author": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Sometimes, the smallest steps lead to the biggest growth. \ud83c\udf31",
+                        "created_at": "2025-02-07T14:22:42.886177Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 16,
+                        "author": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Exactly! It\u2019s the unexpected twists that shape us. Every challenge is just another opportunity to grow. \ud83c\udf1f #TrustTheProcess #Growth",
+                        "created_at": "2025-02-07T14:23:29.929222Z",
+                        "is_deleted": false,
+                        "parent_id": 13
+                    },
+                    {
+                        "id": 17,
+                        "author": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Couldn't agree more! The challenges are what make the journey so rewarding in the end. \ud83c\udf31 #EmbraceTheProcess",
+                        "created_at": "2025-02-07T14:24:10.554424Z",
+                        "is_deleted": false,
+                        "parent_id": 13
+                    },
+                    {
+                        "id": 18,
+                        "author": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "True! The challenges push us to evolve and discover new strengths. \ud83c\udf3f #EmbraceTheJourney",
+                        "created_at": "2025-02-07T14:24:41.909155Z",
+                        "is_deleted": false,
+                        "parent_id": 16
+                    },
+                    {
+                        "id": 19,
+                        "author": {
+                            "id": 2,
+                            "username": "bhaskar-joshi",
+                            "email": "bhaskar_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "Absolutely! It\u2019s incredible how the toughest moments often lead to the greatest growth. When faced with challenges, it\u2019s easy to feel overwhelmed, but it\u2019s in those times that we uncover our true potential. Each twist and turn, though unexpected, has its own lesson to offer. Overcoming obstacles not only makes us stronger but also helps us see the bigger picture. It\u2019s all about embracing the process and trusting that every step, no matter how difficult, is guiding us to where we need to be. \ud83c\udf31 #TrustTheJourney #GrowthMindset",
+                        "created_at": "2025-02-07T14:25:54.833573Z",
+                        "is_deleted": false,
+                        "parent_id": 18
+                    }
+                ]
+            }
+        ]
+    }
+]

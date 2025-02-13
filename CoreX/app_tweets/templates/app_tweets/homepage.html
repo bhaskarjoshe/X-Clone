@@ -7,7 +7,7 @@
          {% comment %} Tweet Input Box  {% endcomment %}
         <div class="tweet-input-box">
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-            <textarea name="tweet" rows="4" placeholder="What is happening?!" required></textarea>
+            <textarea name="tweet" rows="4" placeholder="What is happening?!" class="post-textarea" required></textarea>
             <div class="tweet-footer">
                 <input type="file" id="media-input" name="media" accept="image/*, video/*" style="display:none" onchange="handleFileChange(event)">
                 <div class="tweet-footer-navigation">

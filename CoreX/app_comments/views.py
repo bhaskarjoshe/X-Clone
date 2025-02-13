@@ -115,12 +115,13 @@ class CommentRepliesView(APIView):
 
         comment_content = data.get("comment_content")
         if not comment_content:
-            return Response({
-                "error": "Comment content is required."
-            }, status = status.HTTP_400_BAD_REQUEST)
-        
+            return Response(
+                {"error": "Comment content is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         reply = Comment.objects.create(
-            tweet = parent_comment.tweet,
+            tweet=parent_comment.tweet,
             author=request.user,
             parent=parent_comment,
             comment_content=comment_content,

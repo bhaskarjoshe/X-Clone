@@ -11,6 +11,7 @@ from .search_indexes import UserDocument
 
 User = get_user_model()
 
+
 class SearchUsersView(APIView):
     def get(self, request, *args, **kwargs):
         query = request.GET.get("q", "")
@@ -23,14 +24,15 @@ class SearchUsersView(APIView):
                 )
             )
             results = search.execute()
-            users =[
+            users = [
                 {
-                    "id": hit.id, 
-                    "username":hit.username, 
-                    "email": hit.email, 
-                    "bio": hit.bio
-                } for hit in results
-                ]
+                    "id": hit.id,
+                    "username": hit.username,
+                    "email": hit.email,
+                    "bio": hit.bio,
+                }
+                for hit in results
+            ]
             return Response({"users": users})
         return Response({"users": []})
 

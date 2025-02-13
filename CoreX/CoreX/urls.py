@@ -8,9 +8,9 @@ from app_user.views_frontend import profile_page
 urlpatterns = [
     path("admin/", admin.site.urls),
     # normal routes
-    path('', landing_page, name='landing_page'),
-    path('homepage/', homepage, name='homepage'),
-    path('profile/', profile_page, name='profile'),
+    path("", landing_page, name="landing_page"),
+    path("homepage/", homepage, name="homepage"),
+    path("profile/", profile_page, name="profile"),
     path("authenticate/", include("app_authenticate.urls")),
     path("tweets/", include("app_tweets.urls")),
     path("follows/", include("app_follow.urls")),

@@ -8,7 +8,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "email","is_power_user"]
+        fields = ["id", "username", "email", "is_power_user"]
 
 
 class MediaSerializer(serializers.ModelSerializer):
@@ -30,7 +30,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ["id", "author", "comment_content", "created_at", "is_deleted","parent_id"]
+        fields = [
+            "id",
+            "author",
+            "comment_content",
+            "created_at",
+            "is_deleted",
+            "parent_id",
+        ]
 
 
 class TweetSerializer(serializers.ModelSerializer):

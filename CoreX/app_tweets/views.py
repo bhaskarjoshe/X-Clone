@@ -5,6 +5,7 @@ from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from .models import Tweet, Comment, Like, Media
+from .tasks import fetch_tweets_async
 from .serializers import (
     TweetSerializer,
     LikeSerializer,
@@ -25,10 +26,15 @@ class UserTweetsByIdView(APIView):
     pagination_class = TweetPagination()
 
     def get(self, request, user_id):
-        tweets = Tweet.objects.filter(author_id=user_id, is_deleted=False).order_by("-created_at")
-        
+        tweets = Tweet.objects.filter(author_id=user_id, is_deleted=False).order_by(
+            "-created_at"
+        )
+
         if not tweets.exists():
-            return Response({"detail": "No tweets found for this user."}, status=status.HTTP_404_NOT_FOUND)
+            return Response(
+                {"detail": "No tweets found for this user."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
         paginator = self.pagination_class
         result_page = paginator.paginate_queryset(tweets, request)
@@ -44,7 +50,9 @@ class TweetListView(APIView):
         if request.user.is_power_user:
             tweets = Tweet.objects.all().order_by("-created_at")
         else:
-            tweets = Tweet.objects.filter(author=request.user, is_deleted=False).order_by("-created_at")
+            tweets = Tweet.objects.filter(
+                author=request.user, is_deleted=False
+            ).order_by("-created_at")
 
         paginator = TweetPagination()
         result_page = paginator.paginate_queryset(tweets, request, view=self)
@@ -54,13 +62,13 @@ class TweetListView(APIView):
     def post(self, request):
         media_files = request.FILES.getlist("media")
         serializer = TweetSerializer(data=request.data, context={"request": request})
-        
+
         if serializer.is_valid():
             tweet = serializer.save()
             media_instances = [Media.objects.create(file=file) for file in media_files]
             tweet.media.set(media_instances)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -74,7 +82,8 @@ class allTweetView(APIView):
         result_page = paginator.paginate_queryset(tweets, request)
         serializer = TweetSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
-    
+
+
 class FollowingTweetsView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     pagination_class = TweetPagination()
@@ -82,8 +91,10 @@ class FollowingTweetsView(APIView):
     def get(self, request):
         user = request.user
         following_users = user.following.values_list("followed", flat=True)
-        tweets = Tweet.objects.filter(author_id__in=following_users, is_deleted=False).order_by("-created_at")
-        
+        tweets = Tweet.objects.filter(
+            author_id__in=following_users, is_deleted=False
+        ).order_by("-created_at")
+
         paginator = self.pagination_class
         result_page = paginator.paginate_queryset(tweets, request)
         serializer = TweetSerializer(result_page, many=True)
@@ -133,7 +144,7 @@ class TweetDetailView(APIView):
                 {"detail": "Only power users can edit tweets."},
                 status=status.HTTP_403_FORBIDDEN,
             )
-        request.data['created_at'] = timezone.now()
+        request.data["created_at"] = timezone.now()
 
         serializer = TweetSerializer(
             tweet, data=request.data, partial=True, context={"request": request}
@@ -241,11 +252,14 @@ class UploadMediaView(APIView):
                 {"detail": "File is required"}, status=status.HTTP_400_BAD_REQUEST
             )
 
-        media_instances = [Media.objects.create(file=file) for file in media_files]  # Create media first
-        tweet.media.add(*media_instances) 
-        
+        media_instances = [
+            Media.objects.create(file=file) for file in media_files
+        ]  # Create media first
+        tweet.media.add(*media_instances)
+
         return Response(
-            MediaSerializer(media_instances, many=True).data, status=status.HTTP_201_CREATED
+            MediaSerializer(media_instances, many=True).data,
+            status=status.HTTP_201_CREATED,
         )
 
 
@@ -259,4 +273,15 @@ class GetMediaByTweetView(APIView):
         serializer = MediaSerializer(media, many=True)
         return Response(serializer.data)
 
-    
+# celery
+class FetchTweetsAsyncView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        user_id = request.user.id
+        task = fetch_tweets_async.delay(user_id)
+        return Response({
+            "detail": "Fetching tweets asynchronously.",
+            "task_id": task.id
+        },
+        status=status.HTTP_202_ACCEPTED)

@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from .serializers import UserProfileSerializer
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
+from .tasks import fetch_users_with_tweets_async
 
 
 User = get_user_model()
@@ -12,10 +13,10 @@ User = get_user_model()
 
 class AllUserListView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    
+
     def get(self, request):
         users = User.objects.all()
-        serializer = UserProfileSerializer(users, many = True)
+        serializer = UserProfileSerializer(users, many=True)
         return Response(serializer.data)
 
 
@@ -51,3 +52,13 @@ class OtherUserProfileView(APIView):
 
         serializer = UserProfileSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# celery
+class FetchUsersWithTweetsView(APIView):
+    def get(self, request, *args, **kwargs):
+        fetch_users_with_tweets_async.delay()
+        return Response({
+            "message": "Fetching user and tweets. The task has started."
+            },
+            status=status.HTTP_200_OK)

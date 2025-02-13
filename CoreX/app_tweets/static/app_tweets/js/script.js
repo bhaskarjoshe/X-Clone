@@ -346,6 +346,9 @@ document.addEventListener('click', async (event)=>{
             currentButton.innerText = `Unfollow`
             currentButton.style.color = 'black'
             currentButton.style.backgroundColor = 'white'
+            if (document.querySelector('.following').classList.contains('navbar-center-active')) {
+                fetchTweets(1, allFollowingTweetsApiUrl)
+            }
         }
         else{
             try{
@@ -367,21 +370,26 @@ document.addEventListener('click', async (event)=>{
             currentButton.innerText = `Follow`
             currentButton.style.color = 'white'
             currentButton.style.backgroundColor = '#1da1f2' 
+            if (document.querySelector('.following').classList.contains('navbar-center-active')) {
+                fetchTweets(1, allFollowingTweetsApiUrl)
+            }
         }
     }
 })
 
 
 // toggle between profile
-const homepageToggle = document.querySelector('.go-to-homepage')
+const homepageToggle = document.querySelectorAll('.go-to-homepage')
 const searchToggle = document.querySelector('.go-to-searchbar')
 const profileToggle = document.querySelector('.go-to-profile')
+const postButton = document.querySelector('.post-tweet')
 
 
-homepageToggle.addEventListener('click', (event)=>{
-    window.location.href = homepageUrl  
+homepageToggle.forEach(toggle=>{
+    toggle.addEventListener('click', (event)=>{
+        window.location.href = homepageUrl  
+    })
 })
-
 searchToggle.addEventListener('click', (event)=>{
     const searchbar = document.querySelector(".search-bar")
     searchbar.focus()
@@ -391,6 +399,10 @@ profileToggle.addEventListener('click', (event)=>{
     window.location.href = profileUrl 
 })
 
+postButton.addEventListener('click', (event)=>{
+    const textarea = document.querySelector('.post-textarea')
+    textarea.focus()
+})
 
 //like unlike tweet
 document.addEventListener("click", async (event) => {
@@ -553,3 +565,5 @@ document.addEventListener('click', (event) => {
         searchResults.style.display = "none"
     }
 })
+
+

@@ -4,6 +4,7 @@ from .models import User
 
 user_index = Index("users")
 
+
 @registry.register_document
 class UserDocument(Document):
     class Index:
