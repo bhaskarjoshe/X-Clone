@@ -280,8 +280,14 @@ class FetchTweetsAsyncView(APIView):
 
     def post(self, request):
         user_id = request.user.id
-        task = fetch_tweets_async.delay(user_id)
+        result = fetch_tweets_async.delay(user_id)
+
+        if isinstance(result, str) and result.startswith('{'):
+            response = Response(result, content_type='application/json')
+            response['Content-Disposition'] = f'attachment; filename="tweets_{user_id}.json"'
+            return response
+
         return Response(
-            {"detail": "Fetching tweets asynchronously.", "task_id": task.id},
+            {"detail": "Fetching tweets asynchronously.", "task_id": result.id},
             status=status.HTTP_202_ACCEPTED,
         )

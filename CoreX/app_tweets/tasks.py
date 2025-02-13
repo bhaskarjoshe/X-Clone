@@ -18,12 +18,18 @@ def fetch_tweets_async(user_id):
 
     username = tweets.first().author.username if tweets.exists() else "default_user"
 
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    celery_output_dir = os.path.join(base_dir, "..", "celery_data")
-    os.makedirs(celery_output_dir, exist_ok=True)
-    file_path = os.path.join(celery_output_dir, f"tweets_{username}.json")
+    is_render = os.environ.get("RENDER", False)
 
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(json_data)
+    if is_render:
+        return json_data
+    
+    else:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        celery_output_dir = os.path.join(base_dir, "..", "celery_data")
+        os.makedirs(celery_output_dir, exist_ok=True)
+        file_path = os.path.join(celery_output_dir, f"tweets_{username}.json")
 
-    return f"Tweets saved to {file_path}"
+        with open(file_path, "w", encoding="utf-8") as file:
+            file.write(json_data)
+
+        return f"Tweets saved to {file_path}"

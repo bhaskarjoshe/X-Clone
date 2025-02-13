@@ -1,305 +1,14 @@
 [
     {
-        "id": 3,
-        "username": "vinay-reddy",
-        "email": "vinay_reddy@gmail.com",
+        "id": 13,
+        "username": "himanshu-bisht",
+        "email": "himanshu_bisht@gmail.com",
         "profile_picture": null,
-        "bio": "Tech enthusiast, coder, and problem solver. Exploring the world of web development and always learning something new. Let's connect! \ud83c\udf10",
+        "bio": "Just here to share thoughts, moments, and a bit of fun.",
         "is_power_user": false,
-        "last_login": "2025-02-08T09:02:23.345400Z",
-        "date_joined": "2025-01-31T14:22:56.105000Z",
-        "tweets": [
-            {
-                "id": 36,
-                "tweet_content": "\ud83d\udca1 #LifeHack",
-                "author": {
-                    "id": 3,
-                    "username": "vinay-reddy",
-                    "email": "vinay_reddy@gmail.com",
-                    "is_power_user": false
-                },
-                "created_at": "2025-02-05T18:12:04.772294Z",
-                "updated_at": null,
-                "is_pinned": false,
-                "is_deleted": false,
-                "likes": [
-                    {
-                        "id": 29,
-                        "user": {
-                            "id": 6,
-                            "username": "kaushal-kashyap",
-                            "email": "kaushal_kashyap@gmail.com",
-                            "is_power_user": false
-                        },
-                        "created_at": "2025-02-08T04:06:53.640776Z"
-                    }
-                ],
-                "media": [
-                    {
-                        "id": 13,
-                        "file": "/media/tweet_media/lifehack.gif",
-                        "uploaded_at": "2025-02-05T18:12:04.777499Z"
-                    }
-                ],
-                "comments": []
-            }
-        ]
-    },
-    {
-        "id": 6,
-        "username": "kaushal-kashyap",
-        "email": "kaushal_kashyap@gmail.com",
-        "profile_picture": null,
-        "bio": "Just wandering through life, collecting memories and chasing sunsets. \ud83c\udf05\u2728",
-        "is_power_user": false,
-        "last_login": "2025-02-07T14:26:54.946552Z",
-        "date_joined": "2025-02-04T10:26:33.516113Z",
-        "tweets": [
-            {
-                "id": 35,
-                "tweet_content": "Just traveled to a hidden peak \ud83c\udf2b\ufe0f\ud83c\udfde\ufe0f. The mist wrapped around the landscape like nature's mystery blanket. Can't see the top, but the journey was surreal. Sometimes, the beauty is in the unknown. #TravelVibes #NatureMagic #Wanderlust",
-                "author": {
-                    "id": 6,
-                    "username": "kaushal-kashyap",
-                    "email": "kaushal_kashyap@gmail.com",
-                    "is_power_user": false
-                },
-                "created_at": "2025-02-05T18:06:32.574432Z",
-                "updated_at": null,
-                "is_pinned": false,
-                "is_deleted": false,
-                "likes": [
-                    {
-                        "id": 27,
-                        "user": {
-                            "id": 6,
-                            "username": "kaushal-kashyap",
-                            "email": "kaushal_kashyap@gmail.com",
-                            "is_power_user": false
-                        },
-                        "created_at": "2025-02-07T14:27:31.986000Z"
-                    }
-                ],
-                "media": [
-                    {
-                        "id": 12,
-                        "file": "/media/tweet_media/mountains.jpg",
-                        "uploaded_at": "2025-02-05T18:06:32.587913Z"
-                    }
-                ],
-                "comments": []
-            }
-        ]
-    },
-    {
-        "id": 4,
-        "username": "rohit-joshi",
-        "email": "rohit_joshi@gmail.com",
-        "profile_picture": null,
-        "bio": "Explorer of ideas, seeker of stories, and a lover of good conversations. Always chasing experiences, coffee, and a little bit of chaos. \ud83c\udf0d\u2615\u2728",
-        "is_power_user": false,
-        "last_login": "2025-02-11T12:40:45.067236Z",
-        "date_joined": "2025-01-31T14:27:55.333000Z",
-        "tweets": [
-            {
-                "id": 1,
-                "tweet_content": "Just had the best coffee at the new caf\u00e9 in town! Highly recommend it to anyone who loves a good cup of joe! \u2615\ufe0f #coffee #cafe #morningvibes",
-                "author": {
-                    "id": 4,
-                    "username": "rohit-joshi",
-                    "email": "rohit_joshi@gmail.com",
-                    "is_power_user": false
-                },
-                "created_at": "2025-02-01T06:11:52.933167Z",
-                "updated_at": null,
-                "is_pinned": false,
-                "is_deleted": false,
-                "likes": [
-                    {
-                        "id": 7,
-                        "user": {
-                            "id": 4,
-                            "username": "rohit-joshi",
-                            "email": "rohit_joshi@gmail.com",
-                            "is_power_user": false
-                        },
-                        "created_at": "2025-02-03T05:13:09.388965Z"
-                    }
-                ],
-                "media": [],
-                "comments": [
-                    {
-                        "id": 3,
-                        "author": {
-                            "id": 5,
-                            "username": "marques-brownlee",
-                            "email": "marques-brownlee@gmail.com",
-                            "is_power_user": true
-                        },
-                        "comment_content": "Sounds amazing! I\u2019ll have to check it out. Always looking for new spots with great coffee. \u2615\ufe0f #coffeeaddict",
-                        "created_at": "2025-02-01T11:33:09.183638Z",
-                        "is_deleted": false,
-                        "parent_id": null
-                    },
-                    {
-                        "id": 4,
-                        "author": {
-                            "id": 5,
-                            "username": "marques-brownlee",
-                            "email": "marques-brownlee@gmail.com",
-                            "is_power_user": true
-                        },
-                        "comment_content": "I agree, it\u2019s the best!",
-                        "created_at": "2025-02-01T11:44:18.447879Z",
-                        "is_deleted": false,
-                        "parent_id": 3
-                    },
-                    {
-                        "id": 5,
-                        "author": {
-                            "id": 5,
-                            "username": "marques-brownlee",
-                            "email": "marques-brownlee@gmail.com",
-                            "is_power_user": true
-                        },
-                        "comment_content": "I totally agree! That place has the best coffee!",
-                        "created_at": "2025-02-01T11:46:18.568981Z",
-                        "is_deleted": false,
-                        "parent_id": null
-                    },
-                    {
-                        "id": 6,
-                        "author": {
-                            "id": 5,
-                            "username": "marques-brownlee",
-                            "email": "marques-brownlee@gmail.com",
-                            "is_power_user": true
-                        },
-                        "comment_content": "I totally agree! That place has the best coffee!",
-                        "created_at": "2025-02-01T11:47:31.728917Z",
-                        "is_deleted": true,
-                        "parent_id": 4
-                    },
-                    {
-                        "id": 7,
-                        "author": {
-                            "id": 4,
-                            "username": "rohit-joshi",
-                            "email": "rohit_joshi@gmail.com",
-                            "is_power_user": false
-                        },
-                        "comment_content": "I will try to improve",
-                        "created_at": "2025-02-03T05:58:30.933078Z",
-                        "is_deleted": false,
-                        "parent_id": 4
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "tweet_content": "Excited for the weekend getaway! Can't wait to explore new places and make memories with friends! \u2708\ufe0f\ud83c\udf0d #travel #adventure #weekendvibes",
-                "author": {
-                    "id": 4,
-                    "username": "rohit-joshi",
-                    "email": "rohit_joshi@gmail.com",
-                    "is_power_user": false
-                },
-                "created_at": "2025-02-01T06:12:45.039587Z",
-                "updated_at": null,
-                "is_pinned": false,
-                "is_deleted": false,
-                "likes": [
-                    {
-                        "id": 38,
-                        "user": {
-                            "id": 5,
-                            "username": "marques-brownlee",
-                            "email": "marques-brownlee@gmail.com",
-                            "is_power_user": true
-                        },
-                        "created_at": "2025-02-08T10:03:38.477355Z"
-                    }
-                ],
-                "media": [],
-                "comments": []
-            },
-            {
-                "id": 5,
-                "tweet_content": "Just finished working on a new feature for my app! Feeling great about the progress. It's always rewarding to see your code come to life. Can't wait to share the final product with everyone soon. Stay tuned for more updates! #developerlife #coding #techcommunity",
-                "author": {
-                    "id": 4,
-                    "username": "rohit-joshi",
-                    "email": "rohit_joshi@gmail.com",
-                    "is_power_user": false
-                },
-                "created_at": "2025-02-03T04:46:47.228354Z",
-                "updated_at": null,
-                "is_pinned": false,
-                "is_deleted": false,
-                "likes": [
-                    {
-                        "id": 6,
-                        "user": {
-                            "id": 4,
-                            "username": "rohit-joshi",
-                            "email": "rohit_joshi@gmail.com",
-                            "is_power_user": false
-                        },
-                        "created_at": "2025-02-03T04:48:54.641482Z"
-                    }
-                ],
-                "media": [],
-                "comments": []
-            },
-            {
-                "id": 38,
-                "tweet_content": "College life isn't just about classes and exams; it's about the late-night chats, impromptu adventures, and the lifelong friendships forged along the way. Cheers to the memories we've made and the ones yet to come! \ud83c\udf93 #CollegeLife #FriendsForever #Memories",
-                "author": {
-                    "id": 4,
-                    "username": "rohit-joshi",
-                    "email": "rohit_joshi@gmail.com",
-                    "is_power_user": false
-                },
-                "created_at": "2025-02-06T04:42:49.329974Z",
-                "updated_at": null,
-                "is_pinned": false,
-                "is_deleted": false,
-                "likes": [
-                    {
-                        "id": 21,
-                        "user": {
-                            "id": 6,
-                            "username": "kaushal-kashyap",
-                            "email": "kaushal_kashyap@gmail.com",
-                            "is_power_user": false
-                        },
-                        "created_at": "2025-02-07T04:58:36.186999Z"
-                    },
-                    {
-                        "id": 31,
-                        "user": {
-                            "id": 3,
-                            "username": "vinay-reddy",
-                            "email": "vinay_reddy@gmail.com",
-                            "is_power_user": false
-                        },
-                        "created_at": "2025-02-08T05:02:59.550991Z"
-                    },
-                    {
-                        "id": 37,
-                        "user": {
-                            "id": 5,
-                            "username": "marques-brownlee",
-                            "email": "marques-brownlee@gmail.com",
-                            "is_power_user": true
-                        },
-                        "created_at": "2025-02-08T10:03:30.115226Z"
-                    }
-                ],
-                "media": [],
-                "comments": []
-            }
-        ]
+        "last_login": "2025-02-13T06:09:54.942638Z",
+        "date_joined": "2025-02-13T04:22:42.171753Z",
+        "tweets": []
     },
     {
         "id": 5,
@@ -308,7 +17,7 @@
         "profile_picture": null,
         "bio": "Writing my own story, one adventure at a time. Dreamer, observer, and collector of moments. \ud83c\udf3f\ud83d\udcd6",
         "is_power_user": true,
-        "last_login": "2025-02-12T06:01:05.645702Z",
+        "last_login": "2025-02-13T06:13:06.133755Z",
         "date_joined": "2025-02-01T05:46:21.012505Z",
         "tweets": [
             {
@@ -576,7 +285,7 @@
             },
             {
                 "id": 34,
-                "tweet_content": "NEW VIDEO - I Tried Samsung's Secret Android XR Headset, and it was awesome. Think of it as the Nexus/Pixel of headsets. Full of smart software features like this. Coming this year.",
+                "tweet_content": "NEW VIDEO - I Tried Samsung's Secret Android XR Headset, and it was awesome. Think of it as the Nexus/Pixel of headsets. Full of smart software features like this. Coming this year",
                 "author": {
                     "id": 5,
                     "username": "marques-brownlee",
@@ -634,13 +343,315 @@
         ]
     },
     {
+        "id": 3,
+        "username": "vinay-reddy",
+        "email": "vinay_reddy@gmail.com",
+        "profile_picture": null,
+        "bio": "Tech enthusiast, coder, and problem solver. Exploring the world of web development and always learning something new. Let's connect! \ud83c\udf10",
+        "is_power_user": false,
+        "last_login": "2025-02-08T09:02:23.345400Z",
+        "date_joined": "2025-01-31T14:22:56.105000Z",
+        "tweets": [
+            {
+                "id": 36,
+                "tweet_content": "\ud83d\udca1 #LifeHack",
+                "author": {
+                    "id": 3,
+                    "username": "vinay-reddy",
+                    "email": "vinay_reddy@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T18:12:04.772294Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 29,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T04:06:53.640776Z"
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 13,
+                        "file": "/media/tweet_media/lifehack.gif",
+                        "uploaded_at": "2025-02-05T18:12:04.777499Z"
+                    }
+                ],
+                "comments": []
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "username": "kaushal-kashyap",
+        "email": "kaushal_kashyap@gmail.com",
+        "profile_picture": null,
+        "bio": "Just wandering through life, collecting memories and chasing sunsets. \ud83c\udf05\u2728",
+        "is_power_user": false,
+        "last_login": "2025-02-07T14:26:54.946552Z",
+        "date_joined": "2025-02-04T10:26:33.516113Z",
+        "tweets": [
+            {
+                "id": 35,
+                "tweet_content": "Just traveled to a hidden peak \ud83c\udf2b\ufe0f\ud83c\udfde\ufe0f. The mist wrapped around the landscape like nature's mystery blanket. Can't see the top, but the journey was surreal. Sometimes, the beauty is in the unknown. #TravelVibes #NatureMagic #Wanderlust",
+                "author": {
+                    "id": 6,
+                    "username": "kaushal-kashyap",
+                    "email": "kaushal_kashyap@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-05T18:06:32.574432Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 27,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-07T14:27:31.986000Z"
+                    }
+                ],
+                "media": [
+                    {
+                        "id": 12,
+                        "file": "/media/tweet_media/mountains.jpg",
+                        "uploaded_at": "2025-02-05T18:06:32.587913Z"
+                    }
+                ],
+                "comments": []
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "username": "rohit-joshi",
+        "email": "rohit_joshi@gmail.com",
+        "profile_picture": null,
+        "bio": "Explorer of ideas, seeker of stories, and a lover of good conversations. Always chasing experiences, coffee, and a little bit of chaos. \ud83c\udf0d\u2615\u2728",
+        "is_power_user": false,
+        "last_login": "2025-02-13T04:50:59.577048Z",
+        "date_joined": "2025-01-31T14:27:55.333000Z",
+        "tweets": [
+            {
+                "id": 1,
+                "tweet_content": "Just had the best coffee at the new caf\u00e9 in town! Highly recommend it to anyone who loves a good cup of joe! \u2615\ufe0f #coffee #cafe #morningvibes",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-01T06:11:52.933167Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 7,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-03T05:13:09.388965Z"
+                    }
+                ],
+                "media": [],
+                "comments": [
+                    {
+                        "id": 3,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "Sounds amazing! I\u2019ll have to check it out. Always looking for new spots with great coffee. \u2615\ufe0f #coffeeaddict",
+                        "created_at": "2025-02-01T11:33:09.183638Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 4,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "I agree, it\u2019s the best!",
+                        "created_at": "2025-02-01T11:44:18.447879Z",
+                        "is_deleted": false,
+                        "parent_id": 3
+                    },
+                    {
+                        "id": 5,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "I totally agree! That place has the best coffee!",
+                        "created_at": "2025-02-01T11:46:18.568981Z",
+                        "is_deleted": false,
+                        "parent_id": null
+                    },
+                    {
+                        "id": 6,
+                        "author": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "comment_content": "I totally agree! That place has the best coffee!",
+                        "created_at": "2025-02-01T11:47:31.728917Z",
+                        "is_deleted": true,
+                        "parent_id": 4
+                    },
+                    {
+                        "id": 7,
+                        "author": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "comment_content": "I will try to improve",
+                        "created_at": "2025-02-03T05:58:30.933078Z",
+                        "is_deleted": false,
+                        "parent_id": 4
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "tweet_content": "Excited for the weekend getaway! Can't wait to explore new places and make memories with friends! \u2708\ufe0f\ud83c\udf0d #travel #adventure #weekendvibes",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-01T06:12:45.039587Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 38,
+                        "user": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "created_at": "2025-02-08T10:03:38.477355Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 5,
+                "tweet_content": "Just finished working on a new feature for my app! Feeling great about the progress. It's always rewarding to see your code come to life. Can't wait to share the final product with everyone soon. Stay tuned for more updates! #developerlife #coding #techcommunity",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-03T04:46:47.228354Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 6,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-03T04:48:54.641482Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            },
+            {
+                "id": 38,
+                "tweet_content": "College life isn't just about classes and exams; it's about the late-night chats, impromptu adventures, and the lifelong friendships forged along the way. Cheers to the memories we've made and the ones yet to come! \ud83c\udf93 #CollegeLife #FriendsForever #Memories",
+                "author": {
+                    "id": 4,
+                    "username": "rohit-joshi",
+                    "email": "rohit_joshi@gmail.com",
+                    "is_power_user": false
+                },
+                "created_at": "2025-02-06T04:42:49.329974Z",
+                "updated_at": null,
+                "is_pinned": false,
+                "is_deleted": false,
+                "likes": [
+                    {
+                        "id": 21,
+                        "user": {
+                            "id": 6,
+                            "username": "kaushal-kashyap",
+                            "email": "kaushal_kashyap@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-07T04:58:36.186999Z"
+                    },
+                    {
+                        "id": 31,
+                        "user": {
+                            "id": 3,
+                            "username": "vinay-reddy",
+                            "email": "vinay_reddy@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-08T05:02:59.550991Z"
+                    },
+                    {
+                        "id": 37,
+                        "user": {
+                            "id": 5,
+                            "username": "marques-brownlee",
+                            "email": "marques-brownlee@gmail.com",
+                            "is_power_user": true
+                        },
+                        "created_at": "2025-02-08T10:03:30.115226Z"
+                    }
+                ],
+                "media": [],
+                "comments": []
+            }
+        ]
+    },
+    {
         "id": 2,
         "username": "bhaskar-joshi",
         "email": "bhaskar_joshi@gmail.com",
         "profile_picture": null,
         "bio": "Living for the little moments, big dreams, and good vibes. Always curious, always growing. \u2600\ufe0f\ud83c\udf0a",
         "is_power_user": false,
-        "last_login": "2025-02-12T09:11:36.608565Z",
+        "last_login": "2025-02-13T05:57:56.147589Z",
         "date_joined": "2025-01-31T13:58:33.502000Z",
         "tweets": [
             {
@@ -1030,6 +1041,16 @@
                             "is_power_user": true
                         },
                         "created_at": "2025-02-08T12:55:30.298258Z"
+                    },
+                    {
+                        "id": 40,
+                        "user": {
+                            "id": 4,
+                            "username": "rohit-joshi",
+                            "email": "rohit_joshi@gmail.com",
+                            "is_power_user": false
+                        },
+                        "created_at": "2025-02-13T05:57:30.088557Z"
                     }
                 ],
                 "media": [],
