@@ -58,7 +58,7 @@ class OtherUserProfileView(APIView):
 class FetchUsersWithTweetsView(APIView):
     def get(self, request, *args, **kwargs):
         fetch_users_with_tweets_async.delay()
-        return Response({
-            "message": "Fetching user and tweets. The task has started."
-            },
-            status=status.HTTP_200_OK)
+        return Response(
+            {"message": "Fetching user and tweets. The task has started."},
+            status=status.HTTP_200_OK,
+        )

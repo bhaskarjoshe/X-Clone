@@ -273,6 +273,7 @@ class GetMediaByTweetView(APIView):
         serializer = MediaSerializer(media, many=True)
         return Response(serializer.data)
 
+
 # celery
 class FetchTweetsAsyncView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -280,8 +281,7 @@ class FetchTweetsAsyncView(APIView):
     def post(self, request):
         user_id = request.user.id
         task = fetch_tweets_async.delay(user_id)
-        return Response({
-            "detail": "Fetching tweets asynchronously.",
-            "task_id": task.id
-        },
-        status=status.HTTP_202_ACCEPTED)
+        return Response(
+            {"detail": "Fetching tweets asynchronously.", "task_id": task.id},
+            status=status.HTTP_202_ACCEPTED,
+        )

@@ -19,7 +19,7 @@ class FollowerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Follow
-        fields = ["id", "username", "follower_id","email", "is_power_user"]
+        fields = ["id", "username", "follower_id", "email", "is_power_user"]
 
 
 class FollowingSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class FollowingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Follow
-        fields = ["id", "username","following_id", "email", "is_power_user"]
+        fields = ["id", "username", "following_id", "email", "is_power_user"]
 
 
 class FollowCreateSerializer(serializers.ModelSerializer):

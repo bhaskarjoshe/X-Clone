@@ -12,7 +12,7 @@ from .views import (
     allTweetView,
     FollowingTweetsView,
     UserTweetsByIdView,
-    FetchTweetsAsyncView
+    FetchTweetsAsyncView,
 )
 
 app_name = "app_tweets"
@@ -23,46 +23,20 @@ urlpatterns = [
         UserTweetsByIdView.as_view(),
         name="user-tweets-by-id-api",
     ),
-    path(
-        "api/tweet/", 
-        TweetListView.as_view(), 
-        name="tweet-list-api"
-    ),
-    path(
-        "api/tweet/all-tweets/", 
-        allTweetView.as_view(), 
-        name="all-tweets-api"
-    ),
+    path("api/tweet/", TweetListView.as_view(), name="tweet-list-api"),
+    path("api/tweet/all-tweets/", allTweetView.as_view(), name="all-tweets-api"),
     path(
         "api/tweet/following-tweets/",
         FollowingTweetsView.as_view(),
         name="following-tweets-api",
     ),
+    path("api/tweet/<int:pk>/", TweetDetailView.as_view(), name="tweet-detail-api"),
+    path("api/tweet/<int:pk>/pin/", PinTweetView.as_view(), name="tweet-pin-api"),
+    path("api/tweet/<int:pk>/like/", LikeTweetView.as_view(), name="tweet-like-api"),
     path(
-        "api/tweet/<int:pk>/", 
-        TweetDetailView.as_view(),
-          name="tweet-detail-api"
+        "api/tweet/<int:pk>/unlike/", UnlikeTweetView.as_view(), name="tweet-unlike-api"
     ),
-    path(
-        "api/tweet/<int:pk>/pin/", 
-         PinTweetView.as_view(), 
-         name="tweet-pin-api"
-    ),
-    path(
-        "api/tweet/<int:pk>/like/", 
-        LikeTweetView.as_view(), 
-        name="tweet-like-api"
-    ),
-    path(
-        "api/tweet/<int:pk>/unlike/", 
-        UnlikeTweetView.as_view(), 
-        name="tweet-unlike-api"
-    ),
-    path(
-        "api/tweet/<int:pk>/likes/",
-        GetLikesView.as_view(), 
-        name="tweet-likes-api"
-    ),
+    path("api/tweet/<int:pk>/likes/", GetLikesView.as_view(), name="tweet-likes-api"),
     path(
         "api/tweet/<int:pk>/comment/",
         CommentTweetView.as_view(),
@@ -79,8 +53,8 @@ urlpatterns = [
         name="upload-media-api",
     ),
     path(
-        "api/tweet/fetch-tweets-async/",  
+        "api/tweet/fetch-tweets-async/",
         FetchTweetsAsyncView.as_view(),
-        name='fetch-tweets-async-api'
+        name="fetch-tweets-async-api",
     ),
 ]

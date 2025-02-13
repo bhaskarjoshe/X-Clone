@@ -9,7 +9,6 @@
 
 ### Tweeting & Interactions
 - As a user, I should be able to post a tweet (max 280 characters).
-- As a user, I should be able to delete my own tweets.
 - As a user, I should be able to comment on tweets.
 
 ### Home Feed & Following
@@ -22,4 +21,4 @@
 ### Content Control & Management
 - As a power user, I should be able to post longer tweets (up to 25,000 characters).
 - As a power user, I should be able to edit my tweets after posting.
-- As a power user, I should be able to pin a tweet to the top of my profile.
+- As a power user, I should have blue tick in my profile.
