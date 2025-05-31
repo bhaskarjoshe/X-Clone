@@ -2,6 +2,9 @@
 
 A Twitter/X clone built with Django REST Framework, featuring real-time updates, media handling, and comprehensive social networking capabilities.
 
+[Visit the site here](https://x-q770.onrender.com)
+
+
 ## Features
 
 - User Authentication
