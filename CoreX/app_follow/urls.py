@@ -1,8 +1,9 @@
 from django.urls import path
+
 from .views import (
+    FollowerListView,
     FollowerUserView,
     FollowingListView,
-    FollowerListView,
     NonFollowingUsersView,
 )
 

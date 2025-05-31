@@ -1,13 +1,11 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from django.contrib.auth import authenticate, get_user_model, login, logout
+from django.db.models import Q
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth import get_user_model
-from .serializers import RegisterSerializer, LoginSerializer, UserProfileSerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from elasticsearch_dsl.query import MultiMatch
-from .search_indexes import UserDocument
+from .serializers import LoginSerializer, RegisterSerializer
 
 User = get_user_model()
 
@@ -16,22 +14,19 @@ class SearchUsersView(APIView):
     def get(self, request, *args, **kwargs):
         query = request.GET.get("q", "")
         if query:
-            search = UserDocument.search().query(
-                MultiMatch(
-                    query=query,
-                    fields=["username", "email", "bio"],
-                    fuzziness="auto",
-                )
+            users_qs = User.objects.filter(
+                Q(username__icontains=query)
+                | Q(email__icontains=query)
+                | Q(bio__icontains=query)
             )
-            results = search.execute()
             users = [
                 {
-                    "id": hit.id,
-                    "username": hit.username,
-                    "email": hit.email,
-                    "bio": hit.bio,
+                    "id": user.id,
+                    "username": user.username,
+                    "email": user.email,
+                    "bio": user.bio,
                 }
-                for hit in results
+                for user in users_qs
             ]
             return Response({"users": users})
         return Response({"users": []})

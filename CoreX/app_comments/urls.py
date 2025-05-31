@@ -1,10 +1,11 @@
-from .views import (
-    CommentListView,
-    CreateCommentView,
-    CommentDetailView,
-    CommentRepliesView,
-)
 from rest_framework.urls import path
+
+from .views import (
+    CommentDetailView,
+    CommentListView,
+    CommentRepliesView,
+    CreateCommentView,
+)
 
 urlpatterns = [
     path(

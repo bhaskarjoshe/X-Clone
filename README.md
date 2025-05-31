@@ -9,18 +9,13 @@ A Twitter/X clone built with Django REST Framework, featuring real-time updates,
 - Media Upload Support (Images, GIFs, Videos)
 - Comment System
 - Follow/Unfollow Functionality
-- Real-time Updates using Celery
-- Search Functionality with Elasticsearch
 - RESTful API Architecture
 
 ## Tech Stack
 
 - Django 5.1.5
 - Django REST Framework 3.15.2
-- Celery 5.4.0
 - PostgreSQL
-- Redis
-- Elasticsearch 7.10.1
 - Python 3.x
 
 ## Project Structure
@@ -34,7 +29,6 @@ CoreX/                          # Main Django Project Directory
 ├── app_follow/                # Follow System App
 ├── app_tweets/                # Tweet Management App
 ├── app_user/                  # User Management App
-├── celery_data/              # Celery Task Data
 ├── CoreX/                    # Project Settings
 ├── media/                    # Media Files
 │   └── tweet_media/         # Tweet Media Storage
@@ -69,8 +63,6 @@ Documentation/               # Project Documentation
    DEBUG=True
    SECRET_KEY=your_secret_key
    DATABASE_URL=your_database_url
-   REDIS_URL=your_redis_url
-   ELASTICSEARCH_DSL_HOST=your_elasticsearch_host
    ```
 
 5. Set up the database:
@@ -83,17 +75,9 @@ Documentation/               # Project Documentation
    python manage.py createsuperuser
    ```
 
-7. Start Elasticsearch service (make sure it's installed)
-
-8. Start Redis server (make sure it's installed)
-
-9. Start Celery worker:
-   ```bash
-   celery -A CoreX worker -l info
-   ```
-
-10. Run the development server:
+7. Run the development server:
     ```bash
+    cd CoreX/
     python manage.py runserver
     ```
 

@@ -1,10 +1,10 @@
 from django.urls import path
+
 from .views import (
-    UserProfileView,
-    UpdateUserProfileView,
-    OtherUserProfileView,
     AllUserListView,
-    FetchUsersWithTweetsView,
+    OtherUserProfileView,
+    UpdateUserProfileView,
+    UserProfileView,
 )
 
 app_name = "app_user"
@@ -18,9 +18,4 @@ urlpatterns = [
         "profile/<int:pk>/", OtherUserProfileView.as_view(), name="other-user-profile"
     ),
     path("api/all_users/", AllUserListView.as_view(), name="all-users-list"),
-    path(
-        "api/fetch-users-tweets-async/",
-        FetchUsersWithTweetsView.as_view(),
-        name="fetch-users-tweets-async-api",
-    ),
 ]

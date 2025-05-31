@@ -1,18 +1,18 @@
-from rest_framework import status, permissions
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
-from .models import Tweet, Comment, Like, Media
-from .tasks import fetch_tweets_async
+from rest_framework import permissions, status
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import Comment, Like, Media, Tweet
 from .serializers import (
-    TweetSerializer,
-    LikeSerializer,
     CommentSerializer,
+    LikeSerializer,
     MediaSerializer,
+    TweetSerializer,
 )
-from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class TweetPagination(PageNumberPagination):
@@ -272,22 +272,3 @@ class GetMediaByTweetView(APIView):
 
         serializer = MediaSerializer(media, many=True)
         return Response(serializer.data)
-
-
-# celery
-class FetchTweetsAsyncView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
-
-    def post(self, request):
-        user_id = request.user.id
-        result = fetch_tweets_async.delay(user_id)
-
-        if isinstance(result, str) and result.startswith('{'):
-            response = Response(result, content_type='application/json')
-            response['Content-Disposition'] = f'attachment; filename="tweets_{user_id}.json"'
-            return response
-
-        return Response(
-            {"detail": "Fetching tweets asynchronously.", "task_id": result.id},
-            status=status.HTTP_202_ACCEPTED,
-        )

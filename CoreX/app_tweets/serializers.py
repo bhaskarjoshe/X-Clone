@@ -1,6 +1,7 @@
-from rest_framework import serializers
-from .models import Like, Tweet, Media, Comment
 from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
+from .models import Comment, Like, Media, Tweet
 
 User = get_user_model()
 

@@ -1,9 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from app_tweets.views_frontend import homepage, landing_page
+from app_user.views_frontend import profile_page
 from django.conf import settings
 from django.conf.urls.static import static
-from app_tweets.views_frontend import landing_page, homepage
-from app_user.views_frontend import profile_page
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),

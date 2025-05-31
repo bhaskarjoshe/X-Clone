@@ -1,12 +1,10 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 from django.contrib.auth import get_user_model
-from .serializers import UserProfileSerializer
-from rest_framework import permissions
-from .permissions import IsOwnerOrReadOnly
-from .tasks import fetch_users_with_tweets_async
+from rest_framework import permissions, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .permissions import IsOwnerOrReadOnly
+from .serializers import UserProfileSerializer
 
 User = get_user_model()
 
@@ -52,13 +50,3 @@ class OtherUserProfileView(APIView):
 
         serializer = UserProfileSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-# celery
-class FetchUsersWithTweetsView(APIView):
-    def get(self, request, *args, **kwargs):
-        fetch_users_with_tweets_async.delay()
-        return Response(
-            {"message": "Fetching user and tweets. The task has started."},
-            status=status.HTTP_200_OK,
-        )

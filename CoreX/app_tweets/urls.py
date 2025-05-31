@@ -1,18 +1,18 @@
 from django.urls import path
+
 from .views import (
-    TweetListView,
-    TweetDetailView,
-    PinTweetView,
-    LikeTweetView,
-    UnlikeTweetView,
-    GetLikesView,
     CommentTweetView,
-    UploadMediaView,
-    GetMediaByTweetView,
-    allTweetView,
     FollowingTweetsView,
+    GetLikesView,
+    GetMediaByTweetView,
+    LikeTweetView,
+    PinTweetView,
+    TweetDetailView,
+    TweetListView,
+    UnlikeTweetView,
+    UploadMediaView,
     UserTweetsByIdView,
-    FetchTweetsAsyncView,
+    allTweetView,
 )
 
 app_name = "app_tweets"
@@ -51,10 +51,5 @@ urlpatterns = [
         "api/tweet/<int:pk>/media/upload/",
         UploadMediaView.as_view(),
         name="upload-media-api",
-    ),
-    path(
-        "api/tweet/fetch-tweets-async/",
-        FetchTweetsAsyncView.as_view(),
-        name="fetch-tweets-async-api",
     ),
 ]
