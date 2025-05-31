@@ -48,15 +48,15 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
         const currentUserId = currentUser.id
         const isPowerUser = currentUser.is_power_user
 
-        
+
         data.results.forEach(tweet => {
             const tweetElement = document.createElement("div")
             tweetElement.classList.add("tweet-card")
             tweetElement.setAttribute('data-tweet-id', tweet.id)
-            
+
             const hasLiked = tweet.likes.find(like => like.user.id===currentUserId) !== undefined
             const likeButtonClass = hasLiked ? "liked" : ""
-            const heartIconClass =  hasLiked ? "fa-solid": "fa-regular" 
+            const heartIconClass =  hasLiked ? "fa-solid": "fa-regular"
 
             let editButton = ''
             if(tweet.author.id === currentUserId && isPowerUser){
@@ -65,12 +65,12 @@ async function fetchTweets(page = 1, url = allTweetsApiUrl) {
                         <i class="fa-solid fa-user-pen edit-tweet-icon"></i>
                     </span>
                 `}
-               
+
             tweetElement.innerHTML = `
                 <div class="tweet-header">
                     <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Profile" class="profile-pic">
                     <div class="tweet-user-info">
-                        <strong>${tweet.author.username}</strong> 
+                        <strong>${tweet.author.username}</strong>
                         <span class="tweet-email">@${tweet.author.email.split('@')[0]}</span>
                         <span class="tweet-date">${new Date(tweet.created_at).toLocaleString()}</span>
                     </div>
@@ -111,20 +111,35 @@ async function loadMoreTweets() {
 
 //rendering media files with tweets
 function renderMedia(mediaArray) {
-    if (!mediaArray || mediaArray.length === 0) return ""
+    if (!mediaArray || mediaArray.length === 0) return "";
 
-    let mediaHtml = ""
+    let mediaHtml = "";
     mediaArray.forEach(media => {
-        const fileUrl = media.file
+        let fileUrl = media.file;
 
-        if (fileUrl.endsWith(".jpg") || fileUrl.endsWith(".png") || fileUrl.endsWith(".jpeg") || fileUrl.endsWith(".gif") || fileUrl.endsWith(".webp")) {
-            mediaHtml += `<img src="${fileUrl}" class="tweet-media" alt="Tweet media">`
-        } else if (fileUrl.endsWith(".mp4") || fileUrl.endsWith(".webm") || fileUrl.endsWith(".ogg")) {
-            mediaHtml += `<video controls class="tweet-media"><source src="${fileUrl}" type="video/mp4"></video>`
+        if (!fileUrl.startsWith("http://") && !fileUrl.startsWith("https://")) {
+            fileUrl = `${window.location.origin}/media/${fileUrl}`;
         }
-    })
-    return `<div class="tweet-media-container">${mediaHtml}</div>`
+
+        if (
+            fileUrl.endsWith(".jpg") ||
+            fileUrl.endsWith(".png") ||
+            fileUrl.endsWith(".jpeg") ||
+            fileUrl.endsWith(".gif") ||
+            fileUrl.endsWith(".webp")
+        ) {
+            mediaHtml += `<img src="${fileUrl}" class="tweet-media" alt="Tweet media">`;
+        } else if (
+            fileUrl.endsWith(".mp4") ||
+            fileUrl.endsWith(".webm") ||
+            fileUrl.endsWith(".ogg")
+        ) {
+            mediaHtml += `<video controls class="tweet-media"><source src="${fileUrl}" type="video/mp4"></video>`;
+        }
+    });
+    return `<div class="tweet-media-container">${mediaHtml}</div>`;
 }
+
 
 
 //to toggle b/w for-you and following
@@ -192,7 +207,7 @@ async function postTweet() {
     }
 
     try {
-        
+
         const response = await fetch(postTweetUrl, {
             method: "POST",
             headers: {
@@ -236,7 +251,7 @@ async function uploadMedia(postTweetMediaUrl, selectedFile) {
 }
 
 
-//user-profile-button 
+//user-profile-button
 const profileButton = document.querySelector('.user-profile-button')
 const dropdownMenu = document.getElementById('userDropdown')
 const viewProfile = document.getElementById('viewProfile')
@@ -277,17 +292,17 @@ async function fetchNonFollowedUsers(page = 1){
     try{
         const urlWithPageNo = `${nonFollowedUsersApiUrl}?page=${page}`
         const response = await fetch(urlWithPageNo)
-        
+
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`)
         }
-        
+
         const data = await response.json()
 
         const nonFollowedUserContainer = document.querySelector('.who-to-follow-people')
-        
+
         nonFollowedUserContainer.innerHTML = ''
-        
+
         data.forEach(nonFollowedUser => {
             const whoToFollowElement = document.createElement('div')
             whoToFollowElement.classList.add("who-to-follow-card")
@@ -303,7 +318,7 @@ async function fetchNonFollowedUsers(page = 1){
             `
             nonFollowedUserContainer.appendChild(whoToFollowElement)
         })
-        
+
     }
     catch(error){
         console.log(error)
@@ -352,7 +367,7 @@ document.addEventListener('click', async (event)=>{
         }
         else{
             try{
-                
+
                 const response = await fetch(apiUrl,{
                     method: 'DELETE',
                     headers: {
@@ -369,7 +384,7 @@ document.addEventListener('click', async (event)=>{
             }
             currentButton.innerText = `Follow`
             currentButton.style.color = 'white'
-            currentButton.style.backgroundColor = '#1da1f2' 
+            currentButton.style.backgroundColor = '#1da1f2'
             if (document.querySelector('.following').classList.contains('navbar-center-active')) {
                 fetchTweets(1, allFollowingTweetsApiUrl)
             }
@@ -387,7 +402,7 @@ const postButton = document.querySelector('.post-tweet')
 
 homepageToggle.forEach(toggle=>{
     toggle.addEventListener('click', (event)=>{
-        window.location.href = homepageUrl  
+        window.location.href = homepageUrl
     })
 })
 searchToggle.addEventListener('click', (event)=>{
@@ -396,7 +411,7 @@ searchToggle.addEventListener('click', (event)=>{
 })
 
 profileToggle.addEventListener('click', (event)=>{
-    window.location.href = profileUrl 
+    window.location.href = profileUrl
 })
 
 postButton.addEventListener('click', (event)=>{
@@ -475,9 +490,9 @@ document.addEventListener('click', async (event) => {
             editTweetModal.querySelector('.tweet-username').innerText = username
             editTweetModal.querySelector('.tweet-email').innerText = email
             editTweetModal.querySelector('.tweet-date').innerText = date
-    
+
             editTweetModal.showModal()
-            
+
         }
     }
 })
